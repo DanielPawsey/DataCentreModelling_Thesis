@@ -1,0 +1,18 @@
+*.aux
+*.toc
+*.bbl
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.lof
+*.log
+*.lot
+*.pdfsync
+Data Centre Modelling.synctex.gz
+
+Data Centre Modelling.pdf
+*.blg
+Research files/
+Resources/

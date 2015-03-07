@@ -1,0 +1,345 @@
+% ------------------------------------------------------------------------
+% -*-TeX-*- -*-Hard-*- Smart Wrapping
+% ------------------------------------------------------------------------
+\def\baselinestretch{1}
+
+\chapter{A Critical Review of Relevant Scientific and Engineering Literature}
+\label{chapter:LitReview}
+
+\def\baselinestretch{1.66}
+
+
+%%% ----------------------------------------------------------------------
+
+This chapter details research into various areas relevant to the project, forming a factual basis for assumptions made later in the system development (chapter \ref{chapter:Development}).
+
+%%% ----------------------------------------------------------------------
+\goodbreak
+
+\subsection{Studies into the Environmental Effects And Energy \newline Efficiency of Data-Centres}
+\label{sec:ACriticalReviewOfReleventScientificAndEngineeringLiturature:StudiesIntoTheEnvironmentalEffectsAndEnergyEfficiencyOfDataCenters}
+
+In the study \textbf{GreenDCN: a General Framework for Achieving Energy Efficiency in Data Centre Networks}, \emph{Lin Wang et al.} demonstrate that, in addition to available devices, traffic routing techniques can be considered for the purposes of ensuring more energy-efficient operation of data centres \cite{GreenDCN}. Specifically, either predictive or, perhaps more sensibly, an EER algorithm designed to direct traffic to lesser taxed areas of the network. Furthermore, the paper illustrates that the switches themselves consume power, but switching them off when appropriate saves power, and this is a dynamic that can be modelled in the game application.
+
+Lin Wang et al. \cite{GreenDCN} argue that ordinary methods of data centre
+traffic engineering and prediction can be inaccurate, and instead propose an Energy-
+Efficient Routing (EER) Algorithm, which uses \cite{multipath routing protocol}, MPTCP
+in order to distribute network traffic across pathways which are less taxed at a given time, with an emphasis on avoiding overtaxed areas, weighting assignment against those pathways.
+
+In the same study \cite{GreenDCN}, there is also a section titled \emph{Modelling The Energy-Saving Problem}, which details the difference between energy saving techniques that can be used for a single network data centre, and those with more than one network. The section also discusses the physical means in which power is saved: The network is described as a series of switches, v between servers, and to keep one open requires power proportional to the transmission speed of the switch. Within the game, both the EER and the switching mechanism can be represented as in game rules.
+
+The experimental results of \cite{Lin Wang et al’s} study are thorough in their scope, however, the parameters are limited: A single laptop is used on a single network with a pre-defined power supply is used to test the experimenter's algorithm against others. It would be appropriate to repeat the experiment using different hardware so as to generalise the findings to other networks and different situations.
+\\
+
+The study \textbf{Report to congress on server and data center energy efficiency public law 109-431} \cite{USCongressDataCenterEfficiencyReport} makes an interesting point about the improvement in microprocessor technology between 1986 and 2002, simultaneously increasing in energy efficiency and increasing the demand for them in data centre contexts, which has actually lead to an increase in use of electricity by data centres in the US  \cite[3.1 Expected Energy Savings from Current Energy Efficiency Trends]{USCongressDataCenterEfficiencyReport}. Therefore, in modelling CPU choice for devices in game, it is important to observe this trend and note that with more energy efficient devices comes the temptation to use more of them to increase performance.
+
+This section of the paper goes on to discuss the use of multi-core processors, containing two or more cores running at lower frequencies than equivalent single-core processors. The paper claims that the shift towards multi-core processors in data centres will lead to an increase in overall data centre energy efficiency as multi-core processors are more efficient than equivalent single-core processors. There are two issues with this claim: The paper simply claims that multi-core processors are ``more energy-efficient", without quantifying whether this is because they use less electricity in kilowatt-hours, whether they waste less energy by generating heat, or due to some other factor. Furthermore, this claim seems to contradict the paper's claim that the shift in energy-efficiency of modern microprocessors has led to greater demand for the devices, driving down the overall energy efficiency of data centres in the US \cite[3.1 Expected Energy Savings from Current Energy Efficiency Trends]{USCongressDataCenterEfficiencyReport}.
+
+This section of the paper goes on to make further claims that developments in memory and storage devices may lead to overall greater energy efficiency in data centres in the US.
+
+Furthermore, the study makes some optimistic claims about technological developments and the energy savings this could lead to \cite[3.1 Expected Energy Savings from Current Energy Efficiency Trends]{USCongressDataCenterEfficiencyReport}, however, it is important to note that this is research commissioned and funded by a national government to advise it on how it should spend resources and make policies relating to the problem of energy efficiency in data-centers, so could be considered to be biased towards a particular course of action.
+
+The EPA's claims \cite[3.1 Expected Energy Savings from Current Energy Efficiency Trends]{USCongressDataCenterEfficiencyReport} about multi-core processors are interesting and could be modelled in the game, however, it is important to note the contradictions which that section of the paper makes, which does imply that further research into the energy efficiency of multi-core processors when compared to single-core processors is required.
+\\
+
+In \textbf{Improving Data Center Energy Efficiency Through Environmental Optimization} \textcolor{red}{[NOTE: CHECK THAT THIS IS THE NAME OF THE STUDY]}, \emph{Seeber and Seeber} \cite{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization} performed a study into the influence of various environmental factors on the operational efficiency of data centre computing equipment. The study is an industrial white paper published by \emph{Mid Atlantic Infrared Services, Inc.}, which are a company who sell equipment and services to control the environment of data centres and such IT systems housings \cite{MidAtlanticInfraredWebsite}. As such, the study may have the agenda of selling these products, influencing what is claimed.
+
+\newglossaryentry{CRAC}
+{
+  name=CRAC,
+  description={Acronym of \emph{Computer Room Air Conditioner}, an air conditioning system which takes in air, passes it over a refrigerant-filled coil, and expels the cooled air back out into the \gls{data centre}. It works in a very similar manner to a household or office air conditioning unit \cite[CRAC]{DataCenterHuddleCRACVsCRAHDefinition}. Many   configurations for \emph{CRAC} systems have been used, including systems that intake warm air through ceiling vents where it is refrigerated, before using fans to blow it back into the room through floor vents \cite{CRACDefinition-SearchDataCenter}}
+}
+
+\newglossaryentry{CRAH}
+{
+  name=CRAH,
+  description={Acronym of \emph{Computer Room Air Handler}, these differ from CRAC units by using fans and water cooling systems, rather than air refrigerators \cite{CRAHDefinition-SearchDataCenter}}
+}
+
+The study describes a process called \emph{Environmental Optimisation}, which it describes as being the regulation of humidity, airflow and established set points for air temperature within a \gls{data centre}. The article claims that the right combinations of these factors can lead to substantial energy savings \cite[abstract]{ SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+
+The paper claims that of critical importance is the interdependence of the criteria of air flow, temperature and humidity. Furthermore, it describes the following potential risks of a non \emph{environmentally optimised} data centre:
+
+\begin{itemize}
+
+\item Increasing the flow of air over a server rack that is too hot or too humid could damage the equipment.
+
+\item Increasing humidity without concern for temperature may lead to inefficient operation or damage to equipment due to condensation within equipment.
+
+\item A humidity that is too low may lead to equipment damage through electrostatic discharges.
+
+\end{itemize}
+
+\newglossaryentry{recirculation}
+{
+  name=Recirculation,
+  description={in the context of data centre \emph{environmental optimisation} as discussed in section \ref{ sec:ACriticalReviewOfReleventScientificAndEngineeringLiturature:StudiesIntoTheEnvironmentalEffectsAndEnergyEfficiencyOfDataCenters:WSeeberAndSSeeberImprovingDataCenterEfficiencyThroughEnvironmentalOptimization}, \emph{recirculation} refers to the undesired effect of warm air failing to pass into a warm air inlet, instead circulating back into the room it has already been used to cool. This somewhat negates any prior cooling effect the formerly cool air warms the same equipment it has already cooled. Not only can this damage equipment, it is also an inefficient use of energy, as its desired cooling effect is not achieved \cite{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}\cite{BanuelosManagingDataCentreHeatIssues}}
+}
+
+\cite{ SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization} claims that by using perforated tiles over \gls{CRAC} and \gls{CRAH} air inlets, the air temperature set points for the overall \emph{environmental optimisation} of the data centre can be raised, increasing the overall \textcolor{red}{energy efficiency} of the data centre by reducing the load on the \gls{CRAC} or \gls{CRAH} \textcolor{red}{[YOU NEED TO INCLUDE A DEFINITION OF ENERGY EFFICIENCY IN YOUR BACKGROUND, AND A STANDARD AGAINST WHICH TO MEASURE DATA CENTRES AGAINST IT]} \cite[abstract]{ SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}. \textcolor{red}{[USE STUDY RESULTS TO CHECK AND CRITICISE THIS CLAIM]}
+
+The paper recommends a list of constraints to consider when implementing either a \gls{CRAC} or a \gls{CRAH} system in a \gls{data centre}. These include  ensuring that equipment remains below its manufacturer's recommended maximum operating temperature \textcolor{red}{(implying that the whole \gls{data centre} (or at least each individual zone within it) should not be allowed to increase in temperature above the maximum temperature of its constituent component with the lowest manufacturer recommended maximum operating temperature)}, ensuring proper airflow is maintained, and that enough warm-air inlets are available in the appropriate locations.
+
+The aforementioned criteria mean that an important concern is that greatest energy efficiency in any \gls{data centre} cooling system is achieved when the correct balance of air inlets (through perforated tiles) proving an optimum airflow is achieved \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}
+
+Infra-red mosaic data provided in \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization} scientifically support the paper's claim that hot air \gls{recirculation} leads to server hot spots, which represents inefficient cooling, and a potential risk to equipment within the \gls{data centre}. A strength of the development of these images is that they do show the results of this effect on 440 servers within racks in a typical \gls{data centre} layout. \textcolor{blue}{[}\textcolor{red}{THE FOLLOWING MIGHT BE GOOD, BUT REVIEW, MAYBE ITS IRRELEVANT:}\textcolor{blue}{The study says that the authors have developed techniques to create the infra-red mosaics displayed (figure \ref{fig:SeeberAndSeeberIRMosaics}), displaying an entire \gls{data centre} floor. It is scientifically useful that their study used a single data centre however, there appears to have been no repetition of the study to produce similar Infra-Red mosaics for other data centres, thus, it is not possible to rule out anomalous effects outside of the scope of the study of the data centre studied leading to false results. Furthermore, the paper does not explain how the technique for building the Infra-Red mosaic images work, meaning that their validity is questionable, particularly as t}his study is a white paper: It must be considered that this study and these techniques could be biased to support an agenda of the author.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in]{Resources//S Seeber and W Seeber- IRMosaicImages.png}
+\caption{The Infra-Red mosaic images created for the study. The left hand image shows the result of over-cooling, and the right hand image shows the result of over cooling: The study claims that both of these effects are the result of poor air circulation in different contexts \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.}
+\label{fig:SeeberAndSeeberIRMosaics}
+\end{figure}
+
+This study also includes airflow and air temperature data visualised using a technique called \emph{Data Center Airflow Measurement and Mapping (DAMM)}, a patented technique developed by the paper's institution \cite{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}, which uses data gathered about airflow and temperature with in the \gls{data centre} for these visualisations, which provides an indication of the effectiveness of cooling systems mentioned in the paper \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+
+The DAMM visualisation shown in figure \ref{fig:SeeberAndSeeberDAMM} may be useful as inspiration for the development of an overlay for the program's GUI, showing airflow concerns in the user's \gls{data centre} design, as the visualisation of air flow and temperature as arrows being interpretable to the lay person.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in]{Resources//SeeberAndSeeberDAMMImage.png}
+\caption{
+The DAMM visualisation of airflow and temperature within a data centre \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}. Red arrows show temperatures above 80.6$\,^{\circ}F$, while blue arrows indicate that air temperature is below 64.4$\,^{\circ}F$. The direction and length of the arrows represent the direction and velocity respectively of measured air currents. respectively, resumed at the point at which they terminate (their blunt end).}
+\label{fig:SeeberAndSeeberDAMM}
+\end{figure}
+
+The paper also contains data suggesting that increasing airflow can reduce the incidence of hot spots due to hot air \gls{recirculation} within data centre equipment. A study within the paper shows the propagation of hot spots within equipment included in their study as a temperature of 2$\,^{\circ}F$ was applied, however, the hot spots were abated by increasing airflow by 1000 Cubic Feet per Minute ($CFM$).
+The study indicates that this decrease in recirculation becomes less effective at airflows below 5000 $CFM$, which is displayed in a graph (see figure \ref{fig:SeeberAndSeeberAirflowEffectivenessGraph}) \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in]{Resources//SeeberAndSeeberAirflowEffectivenessGraph.png}
+\caption{Graph from \emph{Seeber and Seeber's} paper showing the relationship between the supply air flow rate and the return air temperature set point required. The graph shows that for air flow rates above 5000 $CFM$, there is less reduction in return air temperature set point per single $CFM$ of airflow increase, meaning that it is less energy efficient to increase airflow above that threshold because the energy consumed in doing so will increase at the same rate, but the threshold at which the air will need to be cooled will not increase at the same rate as if it were below 5000 $CFM$ \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.}
+\label{fig:SeeberAndSeeberAirflowEffectivenessGraph}
+\end{figure}
+
+\emph{Seeber and Seeber's} paper also discusses \emph{leekage}, which is defined as airflow that enters a room from any area other than the perforated floor tiles through which air is supposed to flow between the room and the \gls{CRAC} or \gls{CRAH}. This can cause air to flow in the wrong direction, potentially drawing hot air over equipment, causing a decrease in energy efficiency of the cooling system due to a percentage negation of the cooling already achieved. This leekage is defined in the study as a percentage, with extreme scenarios as being 15\% and 60\% leekage for individual \gls{data centre}s \cite[Optimizing Air Temperature Set Points and Air Flows Can Shrink PUE Numbers]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+
+The final part of \emph{Seeber and Seeber's} paper discusses that none of the above advantages that can be achieved with \emph{environmental optimisation} can be achieved without the maintainable of proper humidity levels within the \gls{data centre} \cite[Impact of Increased Air Flow, Increased CRAC Return Temperature and Optimized Humidity Level on Operation Costs]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}. Figure \ref{fig:SeeberAndSeeberHumidityEffect} illustrates the findings of the final study within the paper, indicating that temperature set points for the \gls{CRAC} or \gls{CRAH} can be increased under lower humidity conditions \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5in]{Resources//SeeberAndSeeberHumidityEffect.png}
+\caption{Graph from the paper indicating that  decreasing air relative humidity towards a lower threshold means that the air in the data centre can be warmer before it must be cooled by the \gls{CRAC} or \gls{CRAH} \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.}
+\label{fig:SeeberAndSeeberHumidityEffect}
+\end{figure}
+
+The trade off in the decreasing rate of prevention of hot-spots in equipment due to \gls{recirculation} at over 5000 $CFM$ \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}, and the increased energy consumption that increasing airflow to this rate entails can be used as a rule in the development of the \emph{logic engine} (see section \ref{sec:Methodology:TechnicalOverview:TheLogicEngine}): A way of simulating this could be to have increased airflow up to 5000 $CFM$ resulting.
+
+The concept of \emph{leakage} could be reflected as a concept in game: it may be possible to develop a mechanic where once the user has developed their data centre, it can be tested under varying percentage leakages, testing the validity of the user's airflow considerations \cite[The Numbers: How Much Can You Really Save Through Environmental Optimization?]{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization}.
+\\
+
+In \textbf{Analyzing End-to-End Energy Consumption for Digital Services}, \emph{Priest et al.} provide a useful demonstration of a similar concept in so far as it involves the use of a model to represent the energy consumption of a system \cite{PreistEtAlAnalysingEndToEndEnergyConsumptionForDigitalServices}. This paper is an assessment of two other studies: \textbf{A model for green design of online news media services} \cite{SchienEtAlAModelForGreenDesignOfOnlineNewsMediaServices} and \textbf{Modeling and Assessing Variability in Energy Consumption During the Use Stage of Online Multimedia Services} \cite{SchienEtAllModelingAndAssessingVariabilityInEnergyConsumptionDuringTheUseStageOfOnlineMultimediaServices}. While the system being modeled is different, and the goal is analysis rather than the production of a game, the approach is nonetheless intriguing; it would be feasible to use a similar model with heuristic rules, where input parameters are supplied as information taken about devices, environments and other factors which affect change on the \gls{data centre} environment. Furthermore, the use of a Monte Carlo algorithm for testing over many iterations could be used for such a system: many \textcolor{red}{pseudo}-randomly preconfigured \gls{data centre} designs could be generated in order to test whether the rule set for the involved device selections work as they should in order to provide a realistic a rule set as possible.
+
+Furthermore, as \emph{A Model for Green Design of Online News Media Services} uses a principle called ``\emph{Life Cycle Assessment}" as its methodological basis, which is defined by the Global Development Research Centre define as a set of procedures used to examine the inputs and outputs in terms of materials and energy of a system, and the environmental affects directly attributable to these, assuming the ``\emph{life cycle}" to be the connected states of the system from its creation until its disposal \cite{GDRCLifeCycleAssessmentDefinition}. This approach may be a useful tool in the context of the game, as it could be developed with the overall objectives of the player being focused on achieving sustainability in terms their \gls{data centre}'s carbon footprint from a life cycle assessment perspective; it would be possible to further extend this to include such factors as the energy efficiency of disposal of and expected operational lifespan of equipment chosen in game.
+
+\subsection{Studies into the Energy Efficiency and Cost Effectiveness of Devices and Elements of Data Centres}
+\label{sec:ACriticalReviewOfReleventScientificAndEngineeringLiturature:StudiesIntoTheEnvironmentalEffectsAndEnergyEffiencyOfDataCenters}
+
+\textbf{The Different Types Of Air Conditioning Equipment for IT Environments}  \cite{TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper} is a useful source of information on components and the rules used to model them. The paper claims that there are five distinct types of cooling systems used in \gls{data centre}s \cite[The 5 basic IT environment heat removal methods]{ TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper}.
+
+\textcolor{red}{Below is a list of systems discussed in the study, rendered as a table for easier comparison. The advantages and disadvantages of the systems are discussed as the study discusses them:}
+
+It is worth noting that this study does not provide supporting evidence or citations for any of the claims made about the systems. As this is a white paper, it can be assumed that this information is considered to be expert testimonial from the author, however, in the same vein, it must be considered that a salesmanship agenda may be present, attempting to attract readers to certain types of cooling system, and dissuade them from others.
+
+\emph{Direct Expansion (DX) Air Cooled Systems}  are two piece systems that rely on warm air being drawn into a \gls{CRAC} where it comes into close proximity with a cooled and compressed fluid refrigerant, which is pumped to a fan system located outside of the \gls{data centre}, where it is able to lose heat by passing through a trough or tank with a large surface area, where it can loose heat too the air, which is drawn away by fans. In function, this system is fundamentally the same as a commercial air conditioning system \cite{ DataCenterHuddleCRACVsCRAHDefinition}.
+   
+Their primary advantage is that they are easier to maintain and cheaper to install than the other systems.
+
+Their disadvantages are as follows:
+
+\begin{itemize}
+\item They are less effective at cooling larger spaces.
+   
+\item Pumping the refrigerant over great distances can require a lot of energy, which can negate financial savings made by installing the cheaper \emph{DX} system in the first place.
+\end{itemize}
+
+They are intended for use in small to medium sized data centres, where pumping the coolant short distances will not be as expensive.
+  
+\emph{Air Cooled Self Contained Systems} are single-piece systems which work by drawing air into themselves and directing it away from the \gls{data centre} as a stream of exhaust air heated to 49$^{\circ}$C, allowing for more warm air to be drawn into the system. For this to work, the air being drawn into the system must be cool and come from outside of the system, so as  to avoid warm air being drawn into the resultant vacuum\cite[Air cooled self-contained systems (1-piece)]{ TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper}.
+
+Their primary advantage is that their installation is cheaper, and they benefit from better testing.
+
+Their disadvantages are as follows:
+\begin{itemize}
+   \item Lower capacity for the removal of warm air, and the requirement of potentially expensive ductwork for the removal of warm air. 
+   \item Less effective for cooling than other systems, meaning more of them may be required, which may negate their lower set-up cost.
+\end{itemize} 
+
+\newglossaryentry{hot spot}
+{
+  name=Hot Spot,
+  description={A hot spot occurs when a data centre device such as a server rack is
+  allowed to become much warmer than its surroundings.Hot spots can be the
+  product of recirculation, where warm are is allowed to pass over devices that
+  have not been cooled \cite{BanuelosManagingDataCentreHeatIssues}.}
+}
+
+They are best used in small data centres, or as support coolers in large \gls{data centre}s that rely on other systems for their primary cooling. Also useful for spot cooling devices that may potentially be exposed to \gls{hot spot}s.\\
+ 
+\emph{Glycol cooled systems} use glycol (a mixture of water and ethylene glycol) as its cooling agent, which is a more efficient transfer medium for heat than water \cite{TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper}, but has a lower specific heat capacity than clean water \cite{EngineeringToolBoxEthyleneGlycolHeatTransferFluid}. Similarly to the air cooled DX system, the \emph{glycol cooled system} includes a heat exchange system inside the room to be cooled, and a fluid cooler and pump system external to the building (often roof mounted). Also similarly to the air cooled DX system, this air cooler uses forced air circulation over a coil through which the coolant flows to reject heat to the surrounding air. 
+
+Their advantages are as follows:
+\begin{itemize}
+   \item The air-refrigerating section of this system is a singular self contained and factory tested unit.
+   \item These can run much longer coolant pipes than air coolant systems, and that a single pump package can supply many glycol based \gls{CRAC} units on a single coolant circuit.
+   \item Glycol can be cooled to -10$^{\circ}$C, meaning that an additional stage can be incorporated into the system, called ``free cooling", which involves allowing coolant to pass through an economiser coil into which air is drawn, before it reaches the refrigerator stage. In some cases, this can allow the refrigerator to be turned off, saving energy if local environmental factors allow for the fluid cooler section to be cooled to -10$^{\circ}$C.
+\end{itemize}
+
+Their disadvantages are as follows:
+\begin{itemize}
+   \item Because of glycol's lower specific heat capacity, this system may require a larger volume of flowing glycol than an equivalent water cooling system \cite{EngineeringToolBoxEthyleneGlycolHeatTransferFluid}. 
+   \item A pump system is required for the movement of the glycol fluid, which raises installation and maintenance costs.
+   \item The glycol fluid is expensive and has the potential for chemical degradation, and that an additional potentially dangerous source of liquid is introduced into the \gls{data centre} environment.
+   \item The glycol mixture is toxic to humans \cite{friedmanConsequencesOfEthyleneGlycolPoisoning} and many other species \cite[8.3 Environmental risk factors]{CICAEthyleneGlycolEnvironmentalAspects}. This means that measures must be taken to prevent exposure of the glycol coolant to humans and the environment (particularly as part of the coolant circuit is external to the building), and measures to address damage caused in the event of a leak must be addressed. Both of these circumstances are potentially costly for the organisation.
+\end{itemize} 
+
+\textcolor{red}{[ADD A BEST DATACENTRE SIZE]}
+   
+\emph{water cooled systems} are similar in design and function to glycol cooled systems, instead using water as its flowing coolant. Rather than the external cooling coil assembly of the glycol cooled system, \emph{water cooled systems} use an assembly called a cooling tower, which sprays the warm water from the coolant circuit onto the inward-tapered sides of the tower, which are lined with a spongy material called \emph{fill}. The fill absorbs the water, which spreads through it, meaning that a greater volume of water is in contact with air at any given time. Similarly to the human sweat response, this greater exposure to air means that more water can evaporate, allowing for the overall body of water to loose heat more rapidly than if less of its surface were exposed to air \cite{exploritSweatEvaroration}\cite{healthyLivingSweatEvaporation}. Furthermore, this evaporation is aided by a fan, which draws more air through the fill, accelerating evaporation. 
+
+Their advantages are as follows:
+\begin{itemize}
+   \item Condenser water from a building's existing air conditioning system can be used in this system also. 
+   \item this is a fully sealed system, which, as a single unit (within the building) is factory sealed and tested. 
+   \item This type of system can handle long distances of piping for the water to flow through, which means that multiple units can by connected as a circuit, potentially requiring fewer pumps than systems where several isolated cooling systems are required.
+\end{itemize} 
+
+Their disadvantages are as follows:
+\begin{itemize}
+   \item The "factory-sealed" aspect of this system could entail expensive maintenance by only those trained to open the unit.
+   \item Long serial water coolant circuits may take on too much heat, reducing the efficiency of each cooler along the circuit.
+   \item This system has a high installation cost, likely due to the specialized components involved: it is not unreasonable to a assume that the factory-sealed interior unit would come at a higher cost due to the testing and processes mentioned as an advantage of the system.
+   \item Cleaning of the system as well as water treatment give this system a high maintenance cost as well. 
+   \item Water will be lost from the cooling tower due to evaporation, particularly in warmer environments; therefore, the system would need to be periodically topped up with water, or potentially fully drained, cleaned and refilled, meaning that a very high cost would be incurred simply for providing the water supply for such a system.
+\end{itemize}
+
+\textcolor{red}{[ADD A BEST DATACENTRE SIZE]}
+   
+\emph{Chilled water systems} are similar to water cooled systems in that they involve water as their coolant, and a cooling tower of the same configuration, however, the paper claims that rather than the standard \gls{CRAC}, chilled water systems use a \gls{CRAH}; the paper describes a \gls{CRAH} as being the unit of the system which draws cool air in, but differs from \gls{CRAC} systems by drawing that air through chilled water coils.
+As such, this type of system requires that water flowing through the \gls{CRAH} units be chilled, not simply cooled by the cooling tower. This chilling of the water is performed by heat-exchanging chiller unit, which allows the circuit to loose heat to a separate circuit that runs to the cooling tower. As such, this system is unique relative to the others in that it uses two separate circuits of coolant fluid. See figure \ref{ChilledWaterCRAHSystemDiagram} for an illustration of this type of system.
+
+The advantages of this type of system are as follows:
+\begin{itemize}
+   \item This system's \gls{CRAH} system takes up less space in the room to be cooled than the equivalent \gls{CRAC} of any of the other systems, because a \gls{CRAH} is simply a chilled water coil and potentially a fan intake system. Components such as compressors would be located with the rest of the chiller assembly. 
+   \item It follows this centralisation of the chiller system means that multiple \gls{CRAH} units can be chilled by one chiller, with all of them exchanging heat into a single coolent circuit, leading into the cooling tower circuit. The primary limitation on the number of \gls{CRAH} units connected in this isolated fashion, or in a serial configuration with the chiller would be the rate at which heat could be exchanged between the two coolant circuits.
+   \item These systems have the lowest cost per kilowatt for large installations.
+\end{itemize}
+
+The disadvantages of this type of system are as follows:
+\begin{itemize}
+   \item This system has higher costs relative to other systems for installations below 100kW of electrical load for the facility's IT equipment.
+   \item There exists a danger of introducing an additional source of liquid into the IT environment with this system, potentially leading to damage.
+   \gls{CRAH} units are greater dehumidifying agents than \gls{CRAC} units, thus measures may need to be taken to humidify the room to avoid dangerous static electricity build-up in the IT equipment.
+\end{itemize}
+
+\textcolor{red}{[ADD A BEST DATACENTRE SIZE]}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=5in]{Resources//ChilledWaterCRAHSystemDiagram.png}
+   \caption{Diagram illustrating the \emph{chilled water system} configuration. Note the system has two separate coolant circuits: one between the \gls{CRAH} and the chiller, and one between the chiller and the cooling tower.}
+   \label{fig:ChilledWaterCRAHSystemDiagram}
+\end{figure}
+
+As a whole, this list of different cooling system provides a good general overview into the mechanics of various types of system, however, the paper's complete lack of sources harms its credibility, and in many places assumes a knowledge greater than that of a layman, despite the theme of the paper being one of explanation of computer room cooling systems to readers not necessarily informed on the subject; a good example of this being the paper's baseless claim that \gls{CRAH} units are more dehumidifying than \gls{CRAC} units.
+\\
+
+In \textbf{PAUC: Power-Awarre Utilization Control in Distributed Real-Time Systems}, \emph{Xiaorui Wang et al.}  demonstrate that adjusting CPU usage enables distributed different distributed computing tasks to be completed depending on the environment and the task being worked on \cite{PAUCPower-AwareUtilizationControlInDistributedRealTimeSystems}.
+
+The paper introduces that a problem with Direct Real-time Embedded (DRE) systems, when working on \emph{unpredictable tasks} or in \emph{unpredictable environments} is that it can be difficult to predict when changes to the speed required of CPUs in a distributed system will need to occur, leading to inefficient use of power with CPUs running faster than is required at certain times, or ineffective use of the CPUs themselves by running them too slowly for the task at hand.
+
+Additionally, the paper proposes a system called \emph{Power-Aware Utilization Control (PAUC)}, a two stage regulatory system, where each processor is monitored for the speed it is running at, and the system is allowed to increase or decrease processing speed in real time according to what occurs.
+
+The paper includes extensive testing of PAUC for controlling a group of four Linux servers, each outfitted with 2.4GHz AMD Athlon 64 3800+ CPUs and 1GB of RAM.
+An immediate criticism of this method is that only the one group of machines is used: It is appreciable for the sake of elimination of anomalies stemming from using different devices the experimenters chose to operate in this way, but the test could have been repeated on a group of machines different from the first group. Furthermore, it is not unreasonable to assume that in real-world data centres, networks of differing devices with differing hardware may be used, and the experimenters could have performed a subsequent test to analyse the performance of PAUC in such scenarios.
+
+The experimentation itself shows a how the system responds to changes in demand on one of the servers: PAUC successfully causes the CPU frequency of the test server to increase 8\% at 600ms into the test during an increase in required task processing rate. This test also shows the CPU frequency decrease back to its original value when the task rate decreases at 1200ms into the experiment, reducing power usage automatically. This shows the validity of PAUC for controlling the CPU frequency in single CPUs.
+
+The paper concludes that PAUC, is more effective as a power and usage control solution than a system designed for a similar purpose, which is called EUCON \textcolor{red}{[NOTE: FIND THIS ANACHRONYM]}, claiming that PAUC has both greater adaptability and lower overall power consumption than EUCON. While this is true of the experiment performed, the aforementioned limitations of the experimenter's choice of experimental apparatus means that this conclusion is difficult to generalise beyond this experimental circumstance.
+
+As shown by the study, it is possible to vary the frequency of, and by implication the power consumption of CPUs used in distributed computing systems based on the real-time tasks they are performing \cite{PAUCPower-AwareUtilizationControlInDistributedRealTimeSystems}. This indicates that PAUC could be a decent choice for automating real-time CPU usage on individual servers data centres, which is something that can be modelled as a component of the game in the Component Database, although to do this would require investigation into the effect of PAUC and similar systems with other hardware set-ups.
+
+It is necessary to consider the positive and negative impact of potential inaccuracy of PAUC-like systems as components in-game. These costs should be weighed in terms of money saved (through kilowatt-hour average financial conversion) and the overall impact on the processing speed of the data-centre.
+
+
+%\subsubsection{\textcolor{yellow}{Commercial and User Reviews of Passive Cooling Systems}}
+
+%\textcolor{red}{[NOTE: Everything in \textcolor{yellow}{yellow} needs to be re-assessed as to whether it is to be included in the lit review.]}
+%\begin{itemize}
+%\item \textcolor{yellow}{\emph{bit-tech.net review of the Akasa-Euler case}: The review describes a fan-less small-footprint case, which achieves passive cooling through the CPU itself being in contact with the aluminium case, turning it into a heat-sink, meaning that no active cooling system is required, saving on construction and operating costs per unit. \cite{bit-techAskerEulerPassiveCoolingCaseReview}. The review explains that the case would require a specialised, small profile motherboard, which would be extremely restrictive for use as a server casing as only certain processors, primarily aimed at the home-PC marked would be compatible, meaning that to be used as servers in a data-center, more of them would be required, detracting from the financial saving made by the lack of requirement of a cooling system. Furthermore, the case has a limited number of connections for peripherals.}
+
+%\textcolor{yellow}{These disadvantages, however, do not rule it out for use with on-site workstations for monitoring or administrative use.}
+
+%\textcolor{yellow}{This article does provide a specification list, and a demonstration of why the case is unsuitable for hardware upgrading and expansion, however, it lacks comparative analysis with other similar, or indeed actively cooling devices.}
+%\end{itemize}
+
+\subsection{Studies into the Application of Artificial-Intelligence in Strategy Games}
+\label{sec:ACriticalReviewOfReleventScientificAndEngineeringLiturature:StudiesIntoTheApplicationOfArtificialIntelligenceInStrategyGames}
+
+With \textbf{Short Term Decision Making with Fuzzy Logic And Long Term Decision Making with Neural Networks In Real-Time Strategy Games},
+\emph{Ert\"urk} describes AI for \emph{Real Time Strategy (RTS)} games as a hierarchy of rules which become applicable as advances in the game are made \cite[Section 3]{RTSAILogic}. He gives the example of a game where players must build and defend a village: In this scenario, one cannot train knights until a stable is built. Therefore, rules surrounding the production of knights are \emph{child} rules of rules surrounding the production of a stable.
+
+His principle example is of the RTS \emph{Age Of Empires II}, which he describes as suffering from the limitation of exclusively using rule-based AI for the management of the computer-controlled player: This made it possible to predict the actions of the computer-controlled player as it can never overcome the limitations of it's knowledge-base.
+
+%While this source is taken from the author's on-line blog, it is well written, detailing the subject in a scientific manner, whilst using terminology that allows the layperson to read it. The section reviewed does not appear to directly cite any sources for its information, although the article does appear to link to other sources for more information. This does somewhat detract from the reliability of the section.
+
+The limitations Ert\"urk \cite[Section 3]{RTSAILogic} describes for the rule-based AI of \emph{Age Of Empires II} are not necessarily as relevant to the game application developed in this project: \emph{Age Of Empires II} is described as being a war game, taking place on outdoor battlefields, a scenario that is much more dynamic than that of a data centre, and may require more rules in order to model it: The \gls{data centre} scenario necessitates rules such as temperature restrictions, financial restrictions and interactions between components, rather than the navigation of decision engines within a two dimensional space. Therefore, it is the authors opinion that these drawbacks do not apply as readily to the game being developed, but should be considered during development in order to avoid AI issues.
+
+Er\"turk's described hierarchical structure would be an interesting model to use in the game, as it would allow new rules to be implemented as new components are added in-game.
+
+\subsection{Observations and studies of browser-games developed using JavaScript}
+\label{sec:ACriticalReviewOfReleventScientificAndEngineeringLiturature:ObservationsAndStudiesOfBrowserGamesDevelopedUsingJavaScript}
+
+\textbf{Unreal Engine 3, Ported to JavaScript} is an impressive demonstration of what is possible using JavaScript is a browser game and technology demonstration called Epic Citadel \cite{EpicCitadel}, which features a fully three-dimensionally rendered medieval town which can be explored by the user. This game utilises Epic Games' Unreal Engine 3 ported to JavaScript, and able to run in any JavaScript compatible web browser, as long as the user's system is capable of handling the system requirements of the game.
+
+The technology was reviewed by Grant Brunner \cite{Unreal3JavaScriptExtremeTech}. The article praises the technical achievement that this represents, and the speed at which it was developed, hailing it as potentially representing a future of cross-platform 3D games which need only be coded once without the need to port to other languages or clients.
+The article does suggest that playing Epic Citadel will crash users' browsers, precluding them from actually testing the game themselves. Unfortunately, this does make their claims about the technology appear conjectural at best.
+
+This technology demonstration itself is impressive, and displays what is possible using JavaScript programming embedded into websites. This demonstrates that the development of a 3D GUI for the game is a potentially viable option.
+
+\newglossaryentry{third-person}
+{
+	name=Third-Person,
+	description={In the context of 3D gaming, a \emph{third-person} game is one where the gamer's view is from a position external to any character in the game world, where they are generally not interacted with. As such, a full view of the character which the gamer is controlling is generally visible, with that character being the gamer's means of interacting with the game environment}
+}
+
+\newglossaryentry{first-person shooter}
+{
+	name=First-Person Shooter,
+	description={A genre of game where the player's view of the game environment is through the eyes of the character they are playing as. As such, the player's interactions with the game world are directed towards themselves. As shooters, these games generally involve combat using firearms, or similar styles of directed (often ranged) combat.}
+}
+
+During the 2014 mloc.js conference, \emph{David Galeano} gave a presentation entitled \textbf{JavaScript and the browser as a platform for game development}, in which he discusses \textbf{\emph{Turbulenz}}, which is both a JavaScript based game engine usable for both 2D and 3D games, and the name of the company that produces it \cite{GaleanoJavaScriptForGameDevelopment}. During this, \emph{Galeano} demonstrates two browser based games which have been developed entirely using JavaScript: \emph{Polycraft} \cite{Polycraft}, which is a 3D \gls{third-person} ``persistent floating island game", and a demo of the popular \gls{first-person shooter} game \emph{Quake 4}.
+
+The Turbulenz implementation of Quake 4 is not intended by Turbulenz to be a full game, but rather a demonstration that the Turbulenz engine can be used to support a version of the game which is visually simmilar to the original game, which is based on the C++ coded \emph{id-tech 4} engine used for the native version of Quake 4 \cite{ModDBIdTech4Download} \textcolor{red}{[ADD A CITATION TO SAY THAT QUAKE 4 USES ID TECH 4]}. As such, rather than a coherent demonstration of game-play following a traditional plot, the demonstration is used to show that conventional \gls{first-person shooter} features such as weapons usage and animation, 3D graphics, animation of characters, and shading and lighting of the environment and objects with in it relative to ambient and spot light sources can be achieved on this JavaScript based platform.
+Furthermore, in the YouTube video entitled \textbf{Turbulenz WebGL Engine using Quake 4 assets}, \emph{Galeano} demonstrates the Turbulenz JavaScript port of Quake 4 assets, whilst also discussing some of the technicalities of how porting a game such as Quake 4 as a browser game can be achieved \cite{TurbulenzWebGLQuake4AssetsVideo}. Turbulenz uses WebGL to render graphics, and \textcolor{red}{WebAudio} for sound. WebGL seems to be a solid choice for this, because this game features many assets, including three dimensional objects and rooms, various surface textures, as well as rooms containing as many as thirty light sources rendered in real time (as demonstrated by rotating spot lights \cite{TurbulenzWebGLQuake4AssetsVideo}), thus demonstrating that it is entirely possible to develop a complex three dimensional game environment in JavaScript.
+
+In the conference,\emph{Galeano} discusses a few of the issues which currently impose a performance gap between browser games, and native games \cite{GaleanoJavaScriptForGameDevelopment}. They are as follows:
+
+\begin{itemize}
+	\item \emph{Memory usage}, with the memory requirement overhead being higher than standard JavaScript objects can handle, which can lead to cache errors, and difficulty maintaining storage of objects in arrays. \textcolor{red}{Presumably, this high memory requirement may also lead to issues arising due to the browser game being further abstracted from system resources than a native game would be.}
+	
+	\item \emph{Parallelism} for games on the Turbulenz engine is not currently available; \emph{Galeano} states that drastic improvements would be possible if it were to become possible for a JavaScript based browser game to take advantage of more than the single core available to the browser in systems with more than a single CPU core available.
+	
+	\item \emph{64-bit floating point operations} (e.g. ``double precision" operations) are a requirement of standard JavaScript operations, however, \emph{Galeano} claims that in most games, \emph{32-bit floating operations} offer greater speed, with an acceptable drop in accuracy of operations such as graphical rendering. This raises a conundrum: While it is possible to make a JavaScript compiler use 32-bit floating point operations where 64-bit precision is not required, Turbulenz already features a great deal of code written that does not take advantage of such a system, so it is impractical to modify it in this way. As such, \emph{Galeano} states that it would be an advantage to the Turbulenz if an update to JavaScript were made that would allow Turbulenz to be compiled in its present form, but allowing it to select 32-bit floating point operations where it is able to do so.
+\end{itemize} 
+
+\textcolor{red}{[FIND OUT IF YOU NEED TO CITE THE MP3 OF THE CONFERENCE, OR IF THE .PDF ALONE COUNTS]}
+
+In \emph{Turbulenz WebGL Engine using Quake 4 assets}, \emph{Galeano} states that the Turbulenz uses the \textbf{WebGL} JavaScript API for rendering 3D graphics \cite{TurbulenzWebGLQuake4AssetsVideo}. \emph{Gregg Tavares} defines WebGL as being a 2D graphics API which is capable of rendering 3D graphics in real time\cite{WebGLFundamentals}. This article explains that WebGL uses two shaders to draw onto a HTML5 canvas page element:
+
+\begin{itemize}
+\item A \emph{Vertex shader}, which takes clipspace co-ordinates. These co-ordinates represent a position on the canvas ranging from \textcolor{red}{\textsuperscript{-}1 to \textsuperscript{+}1}, and are given as a pair of values; X axis (vertical) position and Y axis (horizontal) position. For example, \url{0,0} would represent the bottom left hand corner of the canvas, \url{1,1} the top right, and \url{1,0.5} the centre of the right-hand edge. This clipspace based system has the advantage of automatically scaling to fit the display it is being presented on, not matter its size, because the pixels available for the canvas will be divided into a \textcolor{red}{\textsuperscript{-}1 to \textsuperscript{+}}1 clipspace continuum.
+
+\textcolor{red}{[IT SAYS IN HERE +1 TO -1, BUT EXAMPLES ARE 0 TO 1. FIND OUT WHY THIS IS]}
+
+\item A \emph{fragment shader}, which provides colour.
+\end{itemize} 
+
+\textcolor{blue}{The article says that the same principle is used when drawing images as textures with WebGL; The coordinates form where the image is drawn to where it ends are supplied to the vertex shader, while the image \textcolor{red}{file} itself us supplied to the fragment shader, in order to get the colours necessary to render it, before the image itself is copied to the position on page using these properties \cite{WebGLFundamentals}.}
+
+\textcolor{red}{The article states that in order to reproduce 3D graphics, shaders which convert a 3D model into a 2D image must be supplied.} Often, third party libraries must be used to do this, such as \textbf{three.js} \textcolor{purple}{\cite{three.jsManual}} and \textbf{GLGE} \textcolor{purple}{\cite{GLGEWebsite}}. Both of these libraries provide support for 3D animation, directional lighting, skeletal animation, shadows, and other features expected of modern 3D computer graphics. In order to develop the Turbulenz version of the Quake 4 engine using WebGL \cite{TurbulenzWebGLQuake4AssetsVideo}, \emph{Galeano} must have used one of these libraries, or a simmilar JavaScript library in order to make Turbulenz able to render real-time 3D graphics in the way that it does. \textcolor{purple}{[NOTE: THE LINKS IN PURPLE ARE PRIMARY SOURCES- MAKE SURE IT IS OKAY TO USE THESE.]}
+
+\textcolor{red}{[NOTE: CONSIDER INCLUDING STUFF RESEARCHED FROM \cite{WebGLUpAndRunningTonyParisi}]}

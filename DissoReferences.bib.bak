@@ -1,0 +1,874 @@
+% This file was created with JabRef 2.10.
+% Encoding: Cp1252
+
+
+@InProceedings{BrennerEtAlEnvironmentallyOpportunisticComputingTransformingTheDataCenterForEconomicAndEnvironmentalSustainability,
+  Title                    = {Environmentally Opportunistic Computing Transforming The Data Center For Economic And Environmental Sustainability},
+  Author                   = {Paul Brenner and Ryan Jansen and David B. Go and Douglas Thain},
+  Booktitle                = {Green Computing Conference},
+  Year                     = {2010},
+  Pages                    = {383-388},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Crossref                 = {DBLP:conf/green/2010},
+  Ee                       = {http://dx.doi.org/10.1109/GREENCOMP.2010.5598289}
+}
+
+@InProceedings{CurryEnvironmentalChargebackForDataCenterAndCloudComputingConsumers,
+  Title                    = {An Environmental Chargeback for Data Center and Cloud Computing
+Consumers},
+  Author                   = {Edward Curry and Souleiman Hasan and Mark White and Hugh Melvin},
+  Booktitle                = {E2DC},
+  Year                     = {2012},
+  Pages                    = {117-128},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Crossref                 = {DBLP:conf/e2dc/2012},
+  Ee                       = {http://dx.doi.org/10.1007/978-3-642-33645-4_11}
+}
+
+@InProceedings{SchienEtAlAModelForGreenDesignOfOnlineNewsMediaServices,
+  Title                    = {A model for green design of online news media services},
+  Author                   = {Daniel Schien and
+Paul Shabajee and
+Stephen G. Wood and
+Chris Preist},
+  Booktitle                = {WWW},
+  Year                     = {2013},
+  Pages                    = {1111-1122},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Crossref                 = {DBLP:conf/www/2013},
+  Date-modified            = {2014-09-29 13:27:11 +0100},
+  Ee                       = {http://dl.acm.org/citation.cfm?id=2488485},
+  File                     = {:Research files/SchienEtAlAModelForGreenDesignOfOnlineNewsMediaServices.pdf:PDF},
+  Important                = {false},
+  Timestamp                = {2014.06.19}
+}
+
+@Standard{BanuelosManagingDataCentreHeatIssues,
+  Title                    = {Managing Data Centre Heat Issues},
+  Institution              = {Building Industry Consulting Service International},
+  Organization             = {Chatsworth Products, Inc},
+  Author                   = {Victor Banuelos},
+  HowPublished             = {\url{https://www.bicsi.org/pdf/presentations/caribbean_11_10/8%20Managing%20Data%20Center%20Heat%20Issues.pdf}},
+  Note                     = {(Visited on 06/16/2014)},
+  Year                     = {2010},
+
+  Date-modified            = {2014-09-29 13:27:05 +0100},
+  File                     = {:Research files/BanuelosManagingDataCentreHeatIssues.pdf:PDF},
+  Important                = {false},
+  Timestamp                = {2014.06.16}
+}
+
+@Proceedings{ControlofComputerRoomAirConditioningusingITEquipmentSensors,
+  Title                    = {Control of Computer Room Air Conditioning using IT equipment sensors.},
+  Year                     = {2009},
+
+  Author                   = {Geoffrey C. Bell and Bill Storey and Michael K. Patterson},
+  Date-modified            = {2014-09-29 13:27:06 +0100},
+  File                     = {:Research files/ControlofComputerRoomAirConditioningusingITEquipment.pdf:PDF},
+  HowPublished             = {\url{high tech.lbl.gov/documents/data_centres/lbnl-3137.pdf}},
+  Important                = {false},
+  Institution              = {California Energy Commission},
+  Timestamp                = {2014.04.14}
+}
+
+@Misc{healthyLivingSweatEvaporation,
+  Title                    = {How Does Evaporating Sweat Cool You Down? | Healthy Living - azcentral.com},
+
+  Author                   = {Kat Black},
+  HowPublished             = {\url{http://healthyliving.azcentral.com/evaporating-sweat-cool-down-9657.html}},
+  Note                     = {(Visited on 05/23/2014)}
+}
+
+@Misc{Unreal3JavaScriptExtremeTech,
+  Title                    = {extremetech.com - Unreal Engine 3 ported to JavaScript and WebGL, works in any modern browser},
+
+  Author                   = {Grant Brunner},
+  HowPublished             = {Accessed online at http://www.extremetech.com/gaming/151900-unreal-engine-3-ported-to-javascript-and-webgl-works-in-any-modern-browser},
+  Month                    = {March},
+  Year                     = {2013}
+}
+
+@Misc{GLGEWebsite,
+  Title                    = {About � GLGE WebGL Library/Framework},
+
+  Author                   = {Paul Brunt},
+  HowPublished             = {\url{http://www.glge.org/about/}},
+  Note                     = {(Visited on 10/02/2014)},
+  Year                     = {2010}
+}
+
+@Book{burchard2013web,
+  Title                    = {The Web Game Developer's Cookbook: Using JavaScript and HTML5 to Develop Games},
+  Author                   = {Evan Burchard},
+  Publisher                = {Addison-Wesley},
+  Year                     = {2013},
+  Series                   = {Game Design Series},
+
+  ISBN                     = {9780321898388},
+  Lccn                     = {2013000221},
+  Url                      = {http://books.google.co.uk/books?id=2NDNMgEACAAJ}
+}
+
+@Misc{three.jsManual,
+  Title                    = {three.js - documentation - Manual - Creating a scene},
+
+  Author                   = {Ricardo Cabello},
+  HowPublished             = {\url{http://threejs.org/docs/}},
+  Note                     = {(Visited on 10/02/2014)},
+  Year                     = {2014}
+}
+
+@Article{CICAEthyleneGlycolEnvironmentalAspects,
+  Title                    = {ETHYLENE GLYCOL: Environmental aspects},
+  Author                   = {S. Dobson},
+  Journal                  = {Concise International Chemical Assessment},
+  Year                     = {2000},
+  Note                     = {Accessed online at \url{http://apps.who.int/iris/bitstream/10665/42268/1/9241530227.pdf}},
+  Volume                   = {22},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.05.24}
+}
+
+@Misc{EpicCitadel,
+  Title                    = {Epic Citadel},
+
+  Author                   = {Epic Games, Mozilla},
+  HowPublished             = {Accessed online at http://www.unrealengine.com/html5/}
+}
+
+@Article{TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper,
+  Title                    = {The Different Types of Air Conditioning Equipment for IT Environments},
+  Author                   = {Tony Evans},
+  Journal                  = {APC White Paper},
+  Year                     = {2004},
+  Number                   = {59},
+  Volume                   = {59},
+
+  Date-modified            = {2014-09-29 13:27:07 +0100},
+  File                     = {:Research files/TonyEvansTheDifferentTypesOfAirConditioningEquipmentForITEnvironmentsWhitePaper.pdf:PDF},
+  Important                = {false},
+  Institution              = {American Power Conversion},
+  Timestamp                = {2014.04.14},
+  Type                     = {White Paper},
+  Url                      = {\url{ http://www.apcdistributors.com/white-papers/Cooling/WP-59%20The%20Different%20Types%20of%20Air%20Conditioning%20Equipment%20for%20IT%20Environments.pdf}}
+}
+
+@Article{friedmanConsequencesOfEthyleneGlycolPoisoning,
+  Title                    = {Consequences of ethylene glycol poisoning},
+  Author                   = {Eli A. Friedman and Jonathan B. Greenberg and John P. Merril and Gustave J. Dammin},
+  Journal                  = {American Journal of Medicine},
+  Year                     = {1962},
+
+  Month                    = {June},
+  Number                   = {6},
+  Volume                   = {32},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.05.24}
+}
+
+@Conference{GaleanoJavaScriptForGameDevelopment,
+  Title                    = {JavaScript and the browser as a platform for game development},
+  Author                   = {David Galeano},
+  Booktitle                = {mloc.js},
+  Year                     = {2014},
+  Note                     = {Accessed online at \url{http://www.infoq.com/presentations/game-javascript-browser}},
+  Organization             = {mloc.js},
+
+  Date-modified            = {2014-09-29 13:38:44 +0100},
+  File                     = {:Research files/Research files/MLOC2014-DavidGaleano-JavaScriptandthebrowserasaplatformforgamedevelopment (1).pdf:PDF},
+  Important                = {true},
+  Owner                    = {Dan},
+  Timestamp                = {2014.09.28}
+}
+
+@Misc{TurbulenzWebGLQuake4AssetsVideo,
+  Title                    = {Turbulenz WebGL Engine using Quake 4 assets - YouTube},
+
+  Author                   = {David Galeano},
+  HowPublished             = {www.youtube.com/watch?vAJgBmY9-8o},
+  Month                    = {July},
+  Year                     = {2012},
+
+  Abstract                 = {A YouTube video demonstrating Quake 4 assets ported as a browser game using the JavaScript engine Turbulenz.},
+  Date-modified            = {2014-09-30 20:12:24 +0100},
+  File                     = {:Research files/TurbulenzWebGLQuake4AssetsVideo.mp4:MP4},
+  Important                = {true},
+  Timestamp                = {2014.09.29}
+}
+
+@Misc{merckVetinaryManualEthyleneGlycolToxicity,
+  Title                    = {Overview of Ethylene Glycol Toxicity: Ethylene Glycol Toxicity: Merck Veterinary Manual},
+
+  Author                   = {Gregory F. Grauer},
+  HowPublished             = {\url{http://www.merckmanuals.com/vet/toxicology/ethylene_glycol_toxicity/overview_of_ethylene_glycol_toxicity.html}},
+  Month                    = {May},
+  Note                     = {(Visited on 05/24/2014)},
+  Year                     = {2013}
+}
+
+@Book{JavaScriptAndAJAXForDummies,
+  Title                    = {JavaScript and AJAX for Dummies},
+  Author                   = {Andy Harris},
+  Editor                   = {Mark Enochs},
+  Publisher                = {John Wiley \& Sons},
+  Year                     = {2010},
+
+  Date-modified            = {2014-10-18 15:10:53 +0100},
+  File                     = {:Research files/JavaScript & AJAX for dummies.pdf:PDF},
+  Important                = {true},
+  ISBN                     = {978-0-470-41799-7},
+  Owner                    = {Dan},
+  Timestamp                = {2014.10.18}
+}
+
+@Misc{ClimateGameArticleNatureReport,
+  Title                    = {The climate change game},
+
+  Author                   = {Mason Inman},
+  Month                    = {October},
+  Note                     = {Accessed online at the Nature Reports website at http://www.nature.com/climate/2009/0911/full/climate.2009.112.html},
+  Year                     = {2009},
+
+  Day                      = {29}
+}
+
+@Article{WhyUseProlog,
+  Title                    = {Why Use Prolog?},
+  Author                   = {Jocelyn Ireson-Paine},
+  Note                     = {Accessed online at http://www.j-paine.org/why\\_prolog.html}
+}
+
+@Article{EnergyConsumptionOfInformationTechnologyDataCentersIyengarAndSchmidt,
+  Title                    = {Energy Consumption of Information Technology Data Centers},
+  Author                   = {Madhusudan Iyengar and Roger Schmidt},
+  Journal                  = {Electronics Cooling Magazine},
+  Year                     = {2010},
+
+  Month                    = {December},
+  Note                     = {\url{http://www.electronics-cooling.com/2010/12/energy-consumption-of-information-technology-data-centers/}, (Visited on 04/11/2014)},
+  Volume                   = {December 2010 issue},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.04.11},
+  Url                      = {\url{http://www.electronics-cooling.com/2010/12/energy-consumption-of-information-technology-data-centers/}}
+}
+
+@Misc{exploritSweatEvaroration,
+  Title                    = {Keepin' it cool: the science of sweat — Explorit Science Center},
+
+  Author                   = {Lisa Justice},
+  HowPublished             = {\url{http://www.explorit.org/news/keepin-it-cool-the-science-of-sweat}},
+  Note                     = {(Visited on 05/23/2014)}
+}
+
+@Book{KarlosMonteCarloMethods,
+  Title                    = {Monte carlo methods},
+  Author                   = {Kalos, Malvin H and Whitlock, Paula A},
+  Publisher                = {John Wiley \& Sons},
+  Year                     = {2008}
+}
+
+@Misc{KoomeyGrowthInDataCenterElectricityUse,
+  Title                    = {Growth in Data center electrity use 2005 to 2010},
+
+  Author                   = {Jonathan Koomey},
+  HowPublished             = {Oakland, CA: Analytics Press},
+  Month                    = {August},
+  Note                     = {Accessed online at http://www.analyticspress.com/datacenters.html},
+  Year                     = {2011},
+
+  Date-modified            = {2014-04-14 15:14:32 +0100},
+  Timestamp                = {2014.04.14}
+}
+
+@Misc{bit-techAskerEulerPassiveCoolingCaseReview,
+  Title                    = {bit-tech.net: Asker Euler Review},
+
+  Author                   = {Antony Leather},
+  HowPublished             = {Accessed online at http://www.bit-tech.net/hardware/cases/2013/07/23/akasa-euler-review/1},
+  Month                    = {July},
+  Year                     = {2013}
+}
+
+@Book{AIAlgorithmsPrologLispJava,
+  Title                    = {AI Algorithms, Data Structures, and Idioms in Prolog, List, and Java},
+  Author                   = {George F. Luger and Willian A. Stubblefield},
+  Editor                   = {Michael Hirsch},
+  Publisher                = {Pearson Education, Inc.},
+  Note                     = {Accessed online at http://wps.aw.com/wps/media/objects/5771/5909832/PDF/Luger_0136070477_1.pdf},
+
+  Date                     = {2009},
+  Editora                  = {Matt Goldstein},
+  Editorb                  = {Jeff Holcomb},
+  ISBN                     = {13:978-0-13-607047-4},
+  Location                 = {United States of America},
+  Urldate                  = {24/12/2013}
+}
+
+@Article{SMART2020,
+  Title                    = {SMART 2020: Enabling the low carbon economy in the information age},
+  Author                   = {Luis Neves,
+Emily Farnworth,
+Chris Tuppen,
+Juan Carlos Castilla-Rubio,
+Robert Wright,
+Alexander Grossmann,
+Juha-Erkki Mantyniemi,
+Allison Murray,
+Joaquim Croca},
+  Note                     = {Accessed online at http://www.smart2020.org/\_assets/files/03\_Smart2020Report\_lo\_res.pdf},
+
+  Editor                   = {Molly Webb},
+  Institution              = {The Climate Group of the Global eSustainability Initiative (GeSI)}
+}
+
+@Article{TheClimateGameMilinskiEtAl2008,
+  Title                    = {The collective-risk social dilemma and the prevention
+of simulated dangerous climate change},
+  Author                   = {Manfred Milinski, Ralf D. Sommerfeld, Hans-Jurgen Krambeck, Floyd A. Reed, and Jochem Marotzke},
+  Year                     = {2008},
+  Note                     = {Accessed online at http://www.pnas.org/content/105/7/2291.full.pdf},
+
+  Editor                   = {Robert May},
+  Institution              = {Department of Evolutionary Ecology, Max Planck Institute for Evolutionary Biology, 24306 Plo¨ n, Germany; Department of Biology, University of Maryland,
+College Park, MD 20742-5815; and §Department of ‘‘The Ocean in the Earth System,’’ Max Planck Institute for Meteorology, 21046 Hamburg, Germany. Edited at the University of Oxford, Oxford, UK.}
+}
+
+@TechReport{TuftsUniversityIntegratedDataCenterManagement,
+  Title                    = {Integrated Data Center Energy Management},
+  Author                   = {Vincent Manno and Marc Hodes and Rich Wlezien and Robert Hannemann},
+  Institution              = {Tufts University, School of Engineering},
+  Year                     = {2014},
+  Note                     = {(Visited on 04/11/2014)},
+
+  Date-modified            = {2014-04-11 20:55:12 +0100},
+  HowPublished             = {\url{http://engineering.tufts.edu/docs/Sustainability-Energy_Hodes-DataCenter.pdf}},
+  Organization             = {Tufts University, School of Engineering},
+  Timestamp                = {2014.04.11}
+}
+
+@Misc{DataCenterHuddleCRACVsCRAHDefinition,
+  Title                    = {{CRAC} vs. {CRAH} | Data Center Huddle},
+
+  Author                   = {Dan Mascola},
+  HowPublished             = {http://www.dchuddle.com/2011/crac-v-crah/},
+  Month                    = {August},
+  Year                     = {2011},
+
+  Abstract                 = {A definition and comparison of CRAC and CRAH systems.},
+  Date-modified            = {2014-04-26 13:57:08 +0100},
+  Timestamp                = {2014.04.13}
+}
+
+@Book{mcfarland2011javascript,
+  Title                    = {JavaScript \& jQuery},
+  Author                   = {McFarland, David},
+  Publisher                = {O'Reilly},
+  Year                     = {2011},
+
+  Address                  = {Sebastopol, Calif},
+
+  Date-modified            = {2014-09-04 12:10:35 +0100},
+  File                     = {:Research files/JavaScript_&_jQuery_The_Missing_Manual.pdf:PDF},
+  Important                = {true},
+  ISBN                     = {9781449399023},
+  Timestamp                = {2014.09.04}
+}
+
+@Article{ThirdMilleniumTimesInternetIsStillGrowingFast,
+  Title                    = {Breaking News – The Internet and The Cloud Are (Still) Growing… Fast},
+  Author                   = {Mark Mills},
+  Year                     = {2012},
+
+  Month                    = {October},
+  Note                     = {Accessed online at http://thirdmillenniumtimes.com/breaking-news-the-internet-and-the-cloud-are-still-growing-fast/},
+
+  Institution              = {Third Millenium Times}
+}
+
+@Misc{ModDBIdTech4Download,
+  Title                    = {Id-Tech 4 Source Code Download - ModDB},
+
+  Author                   = {ModDB},
+  HowPublished             = {http://www.moddb.com/engines/id-tech-4/downloads/id-tech-4-source-code},
+  Month                    = {August},
+  Year                     = {2003},
+
+  Abstract                 = {Id-Tech 4 source code download link from ModDB.},
+  Date-modified            = {2014-09-30 20:10:31 +0100},
+  File                     = {:Research files/ModDBIdTech4Download.zip:ZIP},
+  Important                = {true},
+  Timestamp                = {2014.09.29}
+}
+
+@Book{TeachYourselfJavaScriptIn24Hours,
+  Title                    = {Sams teach yourself JavaScript in 24 hours},
+  Author                   = {Michael G Moncur},
+  Editor                   = {Mark Taub},
+  Publisher                = {Sams publishing},
+  Year                     = {2013},
+  Edition                  = {5},
+
+  Date-modified            = {2014-10-18 15:11:04 +0100},
+  File                     = {:Research files/Research files/Teach Yourself JavaScript in 24 hours.pdf:PDF},
+  Important                = {true},
+  Owner                    = {Dan},
+  Timestamp                = {2014.10.18}
+}
+
+@Book{HTMLProgrammingWithJavaScriptForDummies,
+  Title                    = {HTML5 Programming With JavaScript For Dummies},
+  Author                   = {John Paul Mueller},
+  Editor                   = {Kim Darosett},
+  Publisher                = {John Wiley \& Sons, Inc.},
+  Year                     = {2013},
+
+  Date-modified            = {2014-10-18 00:05:02 +0100},
+  File                     = {:Research files/HTMLProgrammingWithJavaScriptForDummies.pdf:PDF},
+  Important                = {true},
+  ISBN                     = {978-1-118-46209-6},
+  Timestamp                = {2014.10.17}
+}
+
+@Book{negrino2009javascript,
+  Title                    = {JavaScript and Ajax for the Web},
+  Author                   = {Negrino, Tom},
+  Publisher                = {Peachpit Press},
+  Year                     = {2009},
+
+  Address                  = {Berkeley, CA},
+
+  Date-modified            = {2014-09-29 13:27:17 +0100},
+  Important                = {false},
+  ISBN                     = {9780321564085},
+  Timestamp                = {2014.09.04}
+}
+
+@Article{EnvironmentalAwareVisualDataCenterNetwork,
+  Title                    = {Environmental-aware virtual data center network},
+  Author                   = {Kim Khoa Nguyen and
+Mohamed Cheriet and
+Mathieu Lemay and
+Victor Reijs and
+Andrew Mackarel and
+Alin Pastrama},
+  Journal                  = {Computer Networks},
+  Year                     = {2012},
+  Number                   = {10},
+  Pages                    = {2538-2550},
+  Volume                   = {56},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Ee                       = {http://dx.doi.org/10.1016/j.comnet.2012.03.008}
+}
+
+@Book{WebGLUpAndRunningTonyParisi,
+  Title                    = {WebGL: Up and Running},
+  Author                   = {Tony Parisi},
+  Editor                   = {Mary Treseler},
+  Publisher                = {O�Reilly},
+  Year                     = {2012},
+
+  Address                  = {O�Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472},
+  Edition                  = {1},
+  Month                    = {August},
+
+  File                     = {:Research files/WebGL\: Up and Running, Tony Parisi:Research files/Webgl Up and Running.pdf:PDF},
+  Owner                    = {Dan},
+  Timestamp                = {2014.10.02},
+  Url                      = {\url{http://www.reedbushey.com/85Webgl%20Up%20and%20Running.pdf}}
+}
+
+@Book{pollock2010javascript,
+  Title                    = {JavaScript : a beginner's guide},
+  Author                   = {Pollock, John},
+  Publisher                = {McGraw Hill},
+  Year                     = {2010},
+
+  Address                  = {New York},
+
+  Date-modified            = {2014-10-18 00:04:23 +0100},
+  File                     = {:Research files/pollock2010javascript.pdf:PDF},
+  Important                = {true},
+  ISBN                     = {9780071632959},
+  Timestamp                = {2014.09.04}
+}
+
+@Article{PreistEtAlAnalysingEndToEndEnergyConsumptionForDigitalServices,
+  Title                    = {Analyzing End-to-End Energy Consumption for Digital Services},
+  Author                   = {Chris Preist and Dan Schien and Paul Shabajee and Stephen Wood and Christopher Hodgson},
+  Journal                  = {Computer},
+  Year                     = {2014},
+  Number                   = {5},
+  Pages                    = {92-95},
+  Volume                   = {47},
+
+  Address                  = {Los Alamitos, CA, USA},
+  Date-modified            = {2014-09-29 13:27:09 +0100},
+  Doi                      = {http://doi.ieeecomputersociety.org/10.1109/MC.2014.110},
+  File                     = {:Research files/PreistEtAlAnalysingEndToEndEnergyConsumptionForDigitalServices.pdf:PDF},
+  Important                = {false},
+  ISSN                     = {0018-9162},
+  Publisher                = {IEEE Computer Society},
+  Timestamp                = {2014.06.16}
+}
+
+@TechReport{DrDobbsApplicationsOfProlog,
+  Title                    = {The Practical Application of Prolog},
+  Author                   = {Al Roth},
+  Institution              = {Dr. Dobbs website, originally from AI Expert (April 1993)},
+  Year                     = {2002},
+  Month                    = {December},
+  Note                     = {Accessed online at http://www.drdobbs.com/parallel/the-practical-application-of-prolog/184405220}
+}
+
+@Misc{CRAHDefinition-SearchDataCenter,
+  Title                    = {computer room air handler ({CRAH}) definition | {S}earch {D}ata {C}enter},
+
+  Author                   = {Margaret Rouse},
+  HowPublished             = {\url{http://www.searchdatacenter.techtarget.com/defnition/computer-room-air-handler-CRAH}},
+  Month                    = {May},
+  Year                     = {2012},
+
+  Abstract                 = {A definition of CRAH},
+  Date-modified            = {2014-06-06 20:12:38 +0100},
+  Important                = {false},
+  Timestamp                = {2014.04.14}
+}
+
+@Misc{CRACDefinition-SearchDataCenter,
+  Title                    = {computer room air conditioning unit ({CRAC}) definition | {S}earch {D}ata {C}enter},
+
+  Author                   = {Margaret Rouse},
+  HowPublished             = {\url{http://searchdatacenter.techtarget.com/definition/computer-room-air-conditioning-unit}},
+  Month                    = {June},
+  Year                     = {2008},
+
+  Abstract                 = {A definition of CRAC},
+  Date-modified            = {2014-06-06 20:12:37 +0100},
+  Important                = {false},
+  Timestamp                = {2014.04.13}
+}
+
+@Article{SchienEtAllModelingAndAssessingVariabilityInEnergyConsumptionDuringTheUseStageOfOnlineMultimediaServices,
+  Title                    = {Modeling and Assessing Variability in Energy Consumption During the Use Stage of Online Multimedia Services},
+  Author                   = {Daniel Schien and Paul Shabajee and Mike Yearworth Chris Preist},
+  Journal                  = {Journal of Industrial Ecology},
+  Year                     = {2013},
+  Number                   = {6},
+  Pages                    = {800--813},
+  Volume                   = {17},
+
+  Date-modified            = {2014-09-29 13:27:10 +0100},
+  Doi                      = {10.1111/jiec.12065},
+  File                     = {:Research files/SchienEtAllModelingAndAssessingVariabilityInEnergyConsumptionDuringTheUseStageOfOnlineMultimediaServices.pdf:PDF},
+  Important                = {false},
+  ISSN                     = {1530-9290},
+  Keywords                 = {industrial ecology, information and, communications technology (ICT), Internet, life cycle assessment (LCA), Monte Carlo simulation, online publishing},
+  Timestamp                = {2014.06.19},
+  Url                      = {http://dx.doi.org/10.1111/jiec.12065}
+}
+
+@Article{ThermodynamicsOfDataCentersSchmidtAndIyengar,
+  Title                    = {Thermodynamics of information technology data centers},
+  Author                   = {Roger R. Schmidt and
+Madhusudan K. Iyengar},
+  Journal                  = {IBM Journal of Research and Development},
+  Year                     = {2009},
+  Note                     = {(Visited on 04/11/2014)},
+  Number                   = {3},
+  Pages                    = {9},
+  Volume                   = {53},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Ee                       = {http://dx.doi.org/10.1147/JRD.2009.5429022},
+  HowPublished             = {\url{http://www.electronics-cooling.com/2010/12/energy-consumption-of-information-technology-data-centers/}}
+}
+
+@Misc{SeeberAndSeeberImprovingDataCenterEnergyEfficiencyThroughEnvironmentalOptimization,
+  Title                    = {Improving Data Center Energy Efficiency Through Environmental Optimization},
+
+  Author                   = {William Seeber and Stephen Seeber},
+  HowPublished             = {\url{http://midatlanticinfared.com/wp-content/uploads/2012/05/Improving-Data-Center-Efficiency-Through-Environmental-Optimization.pdf}},
+  Month                    = {May},
+  Note                     = {(Visited on 04/12/2014)},
+  Year                     = {2012},
+
+  Date-modified            = {2014-04-26 12:39:23 +0100},
+  File                     = {:Research files/S Seeber and W Seeber- Improving Data Center Energy Efficiency through Environmental Optimization.pdf:PDF},
+  Important                = {false},
+  Timestamp                = {2014.04.13}
+}
+
+@Misc{WebGLFundamentals,
+  Title                    = {WebGL Fundamentals - HTML5 Rocks},
+
+  Author                   = {Gregg Tavares},
+  HowPublished             = {\url{www.html5rocks.com/tutorials/webgl/webgl_fundamentals}},
+  Month                    = {February},
+  Year                     = {2012},
+
+  Abstract                 = {A discussion of the basics of WebGL},
+  Date-modified            = {2014-09-30 20:18:29 +0100},
+  File                     = {:Research files/WebGLFundamentals.htm:HTM},
+  Important                = {true},
+  Timestamp                = {2014.09.30}
+}
+
+@Misc{Polycraft,
+  Title                    = {GA.ME - Polycraft},
+
+  Author                   = {Turbulenz},
+  HowPublished             = {https://ga.me/games/polycraft},
+  Note                     = {The website hosting the browser game \emph{Polycraft}.},
+  Year                     = {2014},
+
+  Abstract                 = {The web page hosting Turbulenz's JavaScript based browser game ``Polycraft".},
+  Date-modified            = {2014-09-30 20:14:39 +0100},
+  File                     = {:Research files/Polycraft.htm:HTM},
+  Important                = {true},
+  Timestamp                = {2014.09.29}
+}
+
+@Book{JavaScriptForDummies,
+  Title                    = {JavaScript for Dummies},
+  Author                   = {Emily A Vander Veer},
+  Editor                   = {Pat O�Brien},
+  Publisher                = {John Wiley \& Sons},
+  Year                     = {2005},
+  Edition                  = {4},
+
+  Date-modified            = {2014-10-18 15:11:37 +0100},
+  File                     = {:Research files/Research files/JavaScript For Dummies.pdf:PDF},
+  Important                = {true},
+  ISBN                     = {0-7645-7659-3},
+  Owner                    = {Dan},
+  Timestamp                = {2014.10.18}
+}
+
+@Article{GreenDCN,
+  Title                    = {GreenDCN: A General Framework for Achieving Energy Efficiency
+in Data Center Networks},
+  Author                   = {Lin Wang and
+Fa Zhang and
+Jordi Arjona Aroca and
+Athanasios V. Vasilakos and
+Kai Zheng and
+Chenying Hou and
+Dan Li and
+Zhiyong Liu},
+  Journal                  = {IEEE Journal on Selected Areas in Communications},
+  Year                     = {2014},
+  Number                   = {1},
+  Pages                    = {4-15},
+  Volume                   = {32},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Date-modified            = {2014-04-11 20:50:52 +0100},
+  Ee                       = {http://dx.doi.org/10.1109/JSAC.2014.140102},
+  File                     = {:Research files/GreenDCN wang et al.pdf:PDF},
+  Timestamp                = {2014.04.11}
+}
+
+@Article{PAUCPower-AwareUtilizationControlInDistributedRealTimeSystems,
+  Title                    = {{PAUC}: Power-Aware Utiliztion Control in Distributed Real Time Systems},
+  Author                   = {Xiaorui Wang and Xing Fu and Xue Liu and Zonghua Gu},
+  Journal                  = {IEEE Transactions on Industrial Informatics},
+  Year                     = {2010},
+
+  Month                    = {August},
+  Note                     = {Accessed online at www2.ece.ohio-state.edu},
+  Number                   = {3},
+  Volume                   = {6},
+
+  Institution              = {University of Tennesee},
+  Page                     = {302}
+}
+
+@Article{WrightCarbonFootprintingTowardsAUniversallyAcceptedDefinition,
+  Title                    = {Carbon footprinting: towards a universally accepted
+definition},
+  Author                   = {Laurence A. Wright and Simon Kemp and Ian Williams},
+  Journal                  = {Carbon Management},
+  Year                     = {2011},
+
+  Month                    = {April},
+  Note                     = {\url{http://www.tandfonline.com/loi/tcmt20}},
+  Number                   = {1},
+  Pages                    = {61-72},
+  Volume                   = {2},
+
+  Owner                    = {Dan},
+  Publisher                = {Future Science},
+  Timestamp                = {2014.06.16}
+}
+
+@Proceedings{HuuskoEnergyEfficientDataCenters,
+  Title                    = {Energy Efficient Data Centers - First International Workshop, E2DC 2012, Madrid, Spain, Mai 8, 2012, Revised Selected Papers},
+  Year                     = {2012},
+  Editor                   = {Jyrki Huusko and
+Hermann de Meer and
+Sonja Klingert and
+Andrey Somov},
+  Publisher                = {Springer},
+  Series                   = {Lecture Notes in Computer Science},
+  Volume                   = {7396},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Booktitle                = {E2DC},
+  Ee                       = {http://dx.doi.org/10.1007/978-3-642-33645-4},
+  ISBN                     = {978-3-642-33644-7}
+}
+
+@Proceedings{22ndInternationaWWWConference2013,
+  Title                    = {22nd International World Wide Web Conference, WWW '13, Rio
+de Janeiro, Brazil, May 13-17, 2013},
+  Year                     = {2013},
+  Editor                   = {Daniel Schwabe and
+Virg\'{\i}lio A. F. Almeida and
+Hartmut Glaser and
+Ricardo A. Baeza-Yates and
+Sue B. Moon},
+  Publisher                = {International World Wide Web Conferences Steering Committee
+/ ACM},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Booktitle                = {WWW},
+  Date-modified            = {2014-06-19 14:09:07 +0100},
+  Ee                       = {http://dl.acm.org/citation.cfm?id=2488388},
+  Important                = {false},
+  ISBN                     = {978-1-4503-2035-1},
+  Timestamp                = {2014.06.19}
+}
+
+@Misc{DataCenterDefinitionGartnerITGlossary,
+  Title                    = {{D}ata {C}enter | {G}artner {IT G}lossary},
+  HowPublished             = {\url{http://www.gartner.com/it-glossary/data-center/}},
+  Note                     = {(Visited on 04/08/2014)},
+
+  Organization             = {Garter IT Glossary},
+  Owner                    = {Dan},
+  Timestamp                = {2014.04.08}
+}
+
+@Misc{EngineeringToolBoxEthyleneGlycolHeatTransferFluid,
+  Title                    = {The Engineering Toolbox | Ethylene Glycol Heat-Transfer Fluid},
+  HowPublished             = {\url{http://www.engineeringtoolbox.com/ethylene-glycol-d_146.html}},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.05.22}
+}
+
+@Misc{erareplicasFreezingPointsOfGlycol,
+  Title                    = {Freezing Points of Ethylene Glycol Mixtures | erareplicas.com},
+  HowPublished             = {\url{http://www.erareplicas.com/427man/engine/antifreeze.htm}},
+  Note                     = {(Visited on 05/24/2014)}
+}
+
+@Misc{GDRCLifeCycleAssessmentDefinition,
+  Title                    = {Life Cycle Assessment},
+  HowPublished             = {\url{http://www.gdrc.org/uem/lca/lca-define.html}},
+  Note                     = {(Visited on 06/19/2014)}
+}
+
+@Electronic{GooglesPageOnEnergyEfficiencyInItsDataCenters,
+  Title                    = {Efficiency: How we do it - Data Centers | Google},
+  HowPublished             = {\url{http://www.google.co.uk/about/datacenters/efficiency/internal/}},
+  Note                     = {(Visited on 04/12/2014)},
+  Organization             = {Google},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.04.12}
+}
+
+@Electronic{InteraxionWhatIsADataCentre,
+  Title                    = {Data Centre - What is a Data Centre? | {I}nterxion},
+  HowPublished             = {\url{http://www.interxion.com/data-centres/}},
+  Note                     = {(Visited on 04/08/2014)},
+  Organization             = {Interaxion},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.04.08}
+}
+
+@Electronic{PaloAltoWhatIsADataCentre,
+  Title                    = {What is a data center? | {P}alo {A}lto {N}etworks},
+  HowPublished             = {\url{https://www.paloaltonetworks.com/resources/learning-center/what-is-a-data-center.html}},
+  Note                     = {(Visited on 04/08/2014)},
+  Organization             = {Palo Alto Networks},
+
+  Owner                    = {Dan},
+  Timestamp                = {2014.04.08}
+}
+
+@Misc{PUEDefinition,
+  Title                    = {power usage effectiveness ({PUE})},
+  Note                     = {Accessed online at http://searchdatacenter.techtarget.com/definition/power-usage-effectiveness-PUE}
+}
+
+@Other{CiscoGlobalCloudIndex:ForecastAndMethodology,
+  Title                    = {Cisco Global Cloud Index: Forecast and Methodology, 2012-2017},
+  Institution              = {Cisco},
+  Type                     = {White Paper},
+  Year                     = {2013}
+}
+
+@Misc{2011ASHRAEThermalGuidelinesforDataProcessingEquipment,
+  Title                    = {2011 ASHRAE Thermal Guidelines for Data Processing Equipment},
+  Year                     = {2011},
+
+  Date-modified            = {2014-04-15 18:56:00 +0100},
+  File                     = {:Research files/2011ASHRAEThermalGuidelinesforDataProcessingEquipment.pdf:PDF},
+  Timestamp                = {2014.04.15}
+}
+
+@TechReport{IndiraGandiPrologVid,
+  Title                    = {Introduction to PROLOG},
+  Institution              = {Indira Gandi National Open University},
+  Year                     = {2010},
+  Month                    = {December},
+  Note                     = {Video accessed online at http://www.youtube.com/watch?v=GHLfeGN5OMk}
+}
+
+@Proceedings{InternationalGreenComputingConference2010,
+  Title                    = {International Green Computing Conference 2010, Chicago,
+IL, USA, 15-18 August 2010},
+  Year                     = {2010},
+  Publisher                = {IEEE},
+
+  Bibsource                = {DBLP, http://dblp.uni-trier.de},
+  Booktitle                = {Green Computing Conference},
+  ISBN                     = {978-1-4244-7612-1}
+}
+
+@Booklet{SVLGControlOfComputerRoomAirHandlersUsingWirelessSensors.,
+  Title                    = {Control of Computer Room Air Handlers Using Wireless Sensors, Silicon Valley Leadership Group.},
+
+  Address                  = {Silicon Valley Leadership Group
+224 Airport Parkway, Suite 620
+San Jose, CA 95110},
+  HowPublished             = {\url{svlg.org/wp-content/uploads/2012/FTB_cs1.pdf}},
+  Year                     = {2009},
+
+  Abstract                 = {Silicon Valley Leadership Group
+224 Airport Parkway, Suite 620
+San Jose, CA 95110},
+  Date-modified            = {2014-09-29 13:27:03 +0100},
+  File                     = {:Research files/ControlOfComputerRoomAirHandlersUsingWirelessSensors.pdf:PDF},
+  Important                = {false},
+  Timestamp                = {2014.04.14}
+}
+
+@Other{USCongressDataCenterEfficiencyReport,
+  Title                    = {Report to Congress on Server and Data Center Energy Efficiency Public Law 109-431},
+  Institution              = {U.S. Environmental Protection Agency ENERGY STAR Program},
+  Month                    = {August},
+  Note                     = {Accessed online at http://www.energystar.gov/ia/partners/prod\_development/downloads/EPA\_Datacenter\_Report\newline\_Congress\_Final1.pdf},
+  Year                     = {2007}
+}
+
