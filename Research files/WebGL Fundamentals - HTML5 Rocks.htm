@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/ -->
+<html lang="en" dir="ltr" itemscope="" itemtype="http://schema.org/Article" style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths adownload webaudio no-battery blobconstructor contenteditable cors csscalc cssfilters mediaqueries no-regions classlist datalistelem details texttrackapi track filereader filesystem fullscreen getusermedia gamepads xhr2 quotamanagement performance raf no-stylescoped websocketsbinary no-webintents todataurljpeg todataurlwebp webp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta property="twitter:account_id" content="1593210261">
+  <!-- Copyright (c) 2012 Google Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * Author: Gregg Tavares - None
+   *
+   * 
+   *
+  -->
+  <title>WebGL Fundamentals - HTML5 Rocks</title>
+  <meta name="description" content="Fundamentals of using WebGL as a 2D drawing API and using shaders for image processing.">
+  <meta name="keywords" content="html5,html 5,html5 demos,html5 examples,javascript,css3,notifications,geolocation,web workers,apppcache,file api,filereader,indexeddb,offline,audio,video,drag and drop,chrome,sse,mobile">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <link rel="shortcut icon" href="http://www.html5rocks.com/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="HTML5 Rocks RSS" href="http://feeds.feedburner.com/html5rocks">
+
+  <meta itemprop="name" content="WebGL Fundamentals - HTML5 Rocks">
+  <meta itemprop="description" content="Fundamentals of using WebGL as a 2D drawing API and using shaders for image processing.">
+  
+  <meta itemprop="image" content="http://www.html5rocks.com/static/images/html5rocks-logo-wings.png">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ChromiumDev">
+  
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WebGL Fundamentals - HTML5 Rocks">
+  <meta property="og:url" content="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/">
+  <meta property="og:description" content="Fundamentals of using WebGL as a 2D drawing API and using shaders for image processing.">
+  <meta property="og:image" content="http://www.html5rocks.com/static/images/profiles/gman.png">
+  <meta property="og:site_name" content="HTML5 Rocks - A resource for open web HTML5 developers">
+  
+
+  
+  <link rel="author" href="https://www.google.com/profiles/112274749534477530569">
+  
+  
+  <link rel="publisher" href="https://plus.google.com/+GoogleChromeDevelopers">
+
+  
+
+  
+    
+    <link rel="stylesheet" media="all" href="http://www.html5rocks.com/static/css/v2-combined.min.css?20131111">
+    
+
+    
+  
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,800|Source+Code+Pro" rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+
+  <script type="text/javascript" src="./WebGL Fundamentals - HTML5 Rocks_files/count.js" async=""></script><script type="text/javascript" async="" src="./WebGL Fundamentals - HTML5 Rocks_files/analytics.js"></script><script type="text/javascript" async="" src="./WebGL Fundamentals - HTML5 Rocks_files/analytics.js"></script><script async="" src="./WebGL Fundamentals - HTML5 Rocks_files/gtm.js"></script><script async="" src="./WebGL Fundamentals - HTML5 Rocks_files/analytics.js"></script><script async="" src="./WebGL Fundamentals - HTML5 Rocks_files/gtm.js"></script><script src="./WebGL Fundamentals - HTML5 Rocks_files/modernizr.custom.82437.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  
+<style>
+.webgl_center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+iframe.webgl_example {
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+div.webgl_bottombar {
+  border: 1px solid #000;
+  background-color: #eef;
+  width: 95%;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+div.webgl_bottombar>h3 {
+  gbackground-color: red;
+}
+</style>
+
+<script async="" src="./WebGL Fundamentals - HTML5 Rocks_files/count-data.js"></script></head>
+<body data-href="tutorials-webgl-webgl_fundamentals" onload="" class="article tutorial">
+
+  <header class="main" id="siteheader">
+    <h1 id="title">
+      <a href="http://www.html5rocks.com/en/" title="HTML5 Rocks">HTML5 Rocks</a>
+    </h1>
+    <a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#sitenav" id="navtoggle">Show navigation</a>
+
+    
+    <a id="toctoggle" href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc">Table of Contents</a>
+    
+
+    <nav id="sitenav">
+      <ul>
+        
+        <li id="home_menu"><a href="http://www.html5rocks.com/en/" class="home">Home</a></li>
+        
+        <li id="tutorials_menu"><a href="http://www.html5rocks.com/en/tutorials/?page=1" class="tutorials">Tutorials</a></li>
+        <li id="updates_menu"><a href="http://www.html5rocks.com/en/updates/" class="updates">Updates</a></li>
+        <li id="contrib_menu"><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md" target="_blank">Contribute</a></li>
+        <li id="slides_menu"><a href="http://www.html5rocks.com/en/slides" class="slides">Slides</a></li>
+        <li id="resources_menu"><a href="http://www.html5rocks.com/en/resources" class="resources">Resources</a></li>
+      </ul>
+    </nav>
+
+    
+    <nav class="toc" id="toc">
+      <h1>Table of Contents</h1>
+
+      <ul><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglfundamentals">WebGL Fundamentals</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglimageprocessing">WebGL Image Processing</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglimageprocessingcontinued">Applying multiple effects</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglalpha">WebGL and Alpha</a></li></ul>
+
+      <h1 class="visible-title">Localizations:</h1>
+      <ul>
+        
+          <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+        
+      </ul>
+    </nav>
+    
+  </header>
+
+  <div class="body-content">
+    
+
+  <section class="title">
+
+    
+
+    <section class="title-text container">
+      
+      <h1>WebGL Fundamentals</h1>
+      
+      
+
+      <a href="http://www.html5rocks.com/en/" class="watermark">HTML5 Rocks</a>
+    </section>
+  </section>
+
+  <article class="content-wrapper">
+
+    <section class="container">
+
+      
+
+      <div class="article-meta" id="article-meta">
+        <nav class="toc">
+          <h1>Table of Contents</h1>
+
+          <ul><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglfundamentals">WebGL Fundamentals</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglimageprocessing">WebGL Image Processing</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglimageprocessingcontinued">Applying multiple effects</a></li><li><a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#toc-webglalpha">WebGL and Alpha</a></li></ul>
+        </nav>
+
+        <aside class="localizations">
+          <h1>Localizations</h1>
+          <ul>
+            
+              <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute one</a></li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+
+      <div class="content" id="article-content">
+
+        <section class="byline">
+
+          <div class="byline-content">
+            
+            <section class="author-images">
+              <a href="http://www.html5rocks.com/profiles/#gman">
+                <img src="./WebGL Fundamentals - HTML5 Rocks_files/gman.png" itemprop="photo" alt="Gregg Tavares" title="Gregg Tavares">
+              </a>
+
+              
+            </section>
+
+            <section class="meta">
+              <div class="authors">
+                <strong>By</strong> <a href="http://www.html5rocks.com/profiles/#gman">Gregg Tavares</a>
+                
+              </div>
+
+              
+
+              <div class="date">
+                <time pubdate=""><strong>Published:</strong> February 9th, 2012</time>
+                
+                <span><strong>Comments:</strong> <a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/">22</a></span>
+              </div>
+
+              <div id="notcompatible" class="hidden">
+                Your browser may not support the functionality in this article.
+              </div>
+            </section>
+            <div class="clear"></div>
+
+            
+          </div>
+        </section>
+
+        
+
+    <h2 id="toc-webglfundamentals">WebGL Fundamentals</h2>
+    <p>WebGL makes it possible to display amazing realtime 3D graphics in your browser but what many people don't know is that WebGL is actually a 2D API, not a 3D API. Let me explain.
+<!--more-->
+WebGL only cares about 2 things. Clipspace coordinates in 2D and colors. Your job as a programmer using WebGL is to provide WebGL with those 2 things. You provide 2 "shaders" to do this. A Vertex shader which provides the clipspace coordinates and a fragment shader that provides the color.</p>
+<p>Clipspace coordinates always go from -1 to +1 no matter what size your canvas is. Here is a simple WebGL example that shows WebGL in its simplest form.</p>
+<pre class="prettyprint"><span class="com">// Get A WebGL context</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> canvas </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"canvas"</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> gl </span><span class="pun">=</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">getContext</span><span class="pun">(</span><span class="str">"experimental-webgl"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// setup a GLSL program</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> vertexShader </span><span class="pun">=</span><span class="pln"> createShaderFromScriptElement</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">,</span><span class="pln"> </span><span class="str">"2d-vertex-shader"</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> fragmentShader </span><span class="pun">=</span><span class="pln"> createShaderFromScriptElement</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">,</span><span class="pln"> </span><span class="str">"2d-fragment-shader"</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> program </span><span class="pun">=</span><span class="pln"> createProgram</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="pln">vertexShader</span><span class="pun">,</span><span class="pln"> fragmentShader</span><span class="pun">]);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">useProgram</span><span class="pun">(</span><span class="pln">program</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// look up where the vertex data needs to go.</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> positionLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getAttribLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"a_position"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Create a buffer and put a single clipspace rectangle in</span><span class="pln">
+</span><span class="com">// it (2 triangles)</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> buffer </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createBuffer</span><span class="pun">();</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">bindBuffer</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> buffer</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">bufferData</span><span class="pun">(</span><span class="pln">
+    gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> 
+    </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Float32Array</span><span class="pun">([</span><span class="pln">
+        </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> 
+         </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> 
+        </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> 
+        </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> 
+         </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> 
+         </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">]),</span><span class="pln"> 
+    gl</span><span class="pun">.</span><span class="pln">STATIC_DRAW</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">enableVertexAttribArray</span><span class="pun">(</span><span class="pln">positionLocation</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">vertexAttribPointer</span><span class="pun">(</span><span class="pln">positionLocation</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">FLOAT</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// draw</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">drawArrays</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TRIANGLES</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">);</span></pre>
+
+<p>Here's the 2 shaders</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-vertex-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-vertex"</span><span class="tag">&gt;</span><span class="pln">
+attribute vec2 a_position</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  gl_Position </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">(</span><span class="pln">a_position</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-fragment-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-fragment"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  gl_FragColor </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="lit">1</span><span class="pun">);</span><span class="pln">  </span><span class="com">// green</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>This will draw a green rectangle the entire size of the canvas. Here it is</p>
+<iframe class="webgl_example" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-fundamentals.htm" width="400" height="300"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-fundamentals.htm" target="_blank">click here to open in a separate window</a></p>
+<p>Not very exciting :-p</p>
+<p>Again, clipspace coordinates always go from -1 to +1 regardless of the size of the canvas. In the case above you can see we are doing nothing but passing on our position data directly. Since the position data is already in clipspace there is no work to do. <strong>If you want 3D it's up to you to supply shaders that convert from 3D to 2D because WebGL IS A 2D API!!!</strong></p>
+<p>For 2D stuff you would probably rather work in pixels than clipspace so let's change the shader so we can supply rectangles in pixels and have it convert to clipspace for us. Here's the new vertex shader</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-vertex-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-vertex"</span><span class="tag">&gt;</span><span class="pln">
+attribute vec2 a_position</span><span class="pun">;</span><span class="pln">
+
+uniform vec2 u_resolution</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="com">// convert the rectangle from pixels to 0.0 to 1.0</span><span class="pln">
+   vec2 zeroToOne </span><span class="pun">=</span><span class="pln"> a_position </span><span class="pun">/</span><span class="pln"> u_resolution</span><span class="pun">;</span><span class="pln">
+
+   </span><span class="com">// convert from 0-&gt;1 to 0-&gt;2</span><span class="pln">
+   vec2 zeroToTwo </span><span class="pun">=</span><span class="pln"> zeroToOne </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2.0</span><span class="pun">;</span><span class="pln">
+
+   </span><span class="com">// convert from 0-&gt;2 to -1-&gt;+1 (clipspace)</span><span class="pln">
+   vec2 clipSpace </span><span class="pun">=</span><span class="pln"> zeroToTwo </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">;</span><span class="pln">
+
+   gl_Position </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">(</span><span class="pln">clipSpace</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>Now we can change our data from clipspace to pixels</p>
+<pre class="prettyprint"><span class="com">// set the resolution</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> resolutionLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getUniformLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"u_resolution"</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform2f</span><span class="pun">(</span><span class="pln">resolutionLocation</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// setup a rectangle from 10,20 to 80,30 in pixels</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">bufferData</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Float32Array</span><span class="pun">([</span><span class="pln">
+    </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">]),</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">STATIC_DRAW</span><span class="pun">);</span></pre>
+
+<p>And here it is</p>
+<iframe class="webgl_example" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangle.htm" width="400" height="300"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangle.htm" target="_blank">click here to open in a separate window</a></p>
+<p>You might notice the rectangle is near the bottom of that area. WebGL considers the bottom left corner to be 0,0. To get it to be the more traditional top left corner used for 2d graphics APIs we just flip the y coordinate.</p>
+<pre class="prettyprint"><span class="pln">gl_Position </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">(</span><span class="pln">clipSpace </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">),</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span></pre>
+
+<p>And now our rectangle is where we expect it.</p>
+<iframe class="webgl_example" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangle-top-left.htm" width="400" height="300"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangle-top-left.htm" target="_blank">click here to open in a separate window</a></p>
+<p>Let's make the code that defines a rectangle into a function so we can call it for different sized rectangles. While we're at it we'll make the color settable.</p>
+<p>First we make the fragment shader take a color uniform input.</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-fragment-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-fragment"</span><span class="tag">&gt;</span><span class="pln">
+precision mediump </span><span class="kwd">float</span><span class="pun">;</span><span class="pln">
+
+uniform vec4 u_color</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   gl_FragColor </span><span class="pun">=</span><span class="pln"> u_color</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>And here's the new code that draws 50 rectangles in random places and random colors.</p>
+<pre class="prettyprint"><span class="pun">...</span><span class="pln">
+
+  </span><span class="kwd">var</span><span class="pln"> colorLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getUniformLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"u_color"</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+  </span><span class="com">// Create a buffer</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> buffer </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createBuffer</span><span class="pun">();</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindBuffer</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> buffer</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">enableVertexAttribArray</span><span class="pun">(</span><span class="pln">positionLocation</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">vertexAttribPointer</span><span class="pun">(</span><span class="pln">positionLocation</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">FLOAT</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// draw 50 random rectangles in random colors</span><span class="pln">
+  </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> ii </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> ii </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">50</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">ii</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Setup a random rectangle</span><span class="pln">
+    setRectangle</span><span class="pun">(</span><span class="pln">
+        gl</span><span class="pun">,</span><span class="pln"> randomInt</span><span class="pun">(</span><span class="lit">300</span><span class="pun">),</span><span class="pln"> randomInt</span><span class="pun">(</span><span class="lit">300</span><span class="pun">),</span><span class="pln"> randomInt</span><span class="pun">(</span><span class="lit">300</span><span class="pun">),</span><span class="pln"> randomInt</span><span class="pun">(</span><span class="lit">300</span><span class="pun">));</span><span class="pln">
+
+    </span><span class="com">// Set a random color.</span><span class="pln">
+    gl</span><span class="pun">.</span><span class="pln">uniform4f</span><span class="pun">(</span><span class="pln">colorLocation</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Math</span><span class="pun">.</span><span class="pln">random</span><span class="pun">(),</span><span class="pln"> </span><span class="typ">Math</span><span class="pun">.</span><span class="pln">random</span><span class="pun">(),</span><span class="pln"> </span><span class="typ">Math</span><span class="pun">.</span><span class="pln">random</span><span class="pun">(),</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="com">// Draw the rectangle.</span><span class="pln">
+    gl</span><span class="pun">.</span><span class="pln">drawArrays</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TRIANGLES</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Returns a random integer from 0 to range - 1.</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> randomInt</span><span class="pun">(</span><span class="pln">range</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Math</span><span class="pun">.</span><span class="pln">floor</span><span class="pun">(</span><span class="typ">Math</span><span class="pun">.</span><span class="pln">random</span><span class="pun">()</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> range</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Fills the buffer with the values that define a rectangle.</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> setRectangle</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">,</span><span class="pln"> x</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> x1 </span><span class="pun">=</span><span class="pln"> x</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> x2 </span><span class="pun">=</span><span class="pln"> x </span><span class="pun">+</span><span class="pln"> width</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> y1 </span><span class="pun">=</span><span class="pln"> y</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> y2 </span><span class="pun">=</span><span class="pln"> y </span><span class="pun">+</span><span class="pln"> height</span><span class="pun">;</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bufferData</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Float32Array</span><span class="pun">([</span><span class="pln">
+     x1</span><span class="pun">,</span><span class="pln"> y1</span><span class="pun">,</span><span class="pln">
+     x2</span><span class="pun">,</span><span class="pln"> y1</span><span class="pun">,</span><span class="pln">
+     x1</span><span class="pun">,</span><span class="pln"> y2</span><span class="pun">,</span><span class="pln">
+     x1</span><span class="pun">,</span><span class="pln"> y2</span><span class="pun">,</span><span class="pln">
+     x2</span><span class="pun">,</span><span class="pln"> y1</span><span class="pun">,</span><span class="pln">
+     x2</span><span class="pun">,</span><span class="pln"> y2</span><span class="pun">]),</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">STATIC_DRAW</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>And here's the rectangles.</p>
+<iframe class="webgl_example" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangles.htm" width="400" height="300"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-rectangles.htm" target="_blank">click here to open in a separate window</a></p>
+<p>I hope you can see that WebGL is actually a pretty simple API. While it can get more complicated to do 3D that complication is added by you, the programmer, in the form of more complex shaders. The WebGL API itself is 2D and fairly simple.</p>
+
+<h3 id="toc-shaders">What do type="x-shader/x-vertex" and type="x-shader/x-fragment" mean?</h3>
+<p>
+<code>&lt;script&gt;</code> tags default to having JavaScript in them. You can put no type or you can put <code>type="javascript"</code> or <code>type="text/javascript"</code> and the browser will interpret the contents as JavaScript. If you put anything else the browser ignores the contents of the script tag.
+</p>
+<p>
+We can use this feature to store shaders in script tags. Even better, we can make up our own type and in our javascript look for that to decide whether to compile the shader as a vertex shader or a fragment shader.
+</p>
+<p>
+In this case the function <code>createShaderFromScriptElement</code> looks for a script with specified <code>id</code> and then looks at the <code>type</code> to decide what type of shader to create.
+</p>
+
+    <h2 id="toc-webglimageprocessing">WebGL Image Processing</h2>
+    <p>Image processing is easy in WebGL. How easy? Read below.
+</p><p>To draw images in WebGL we need to use textures. Similarly to the way WebGL expects clipspace coordinates when rendering instead of pixels, WebGL expects texture coordinates when reading a texture. Texture coordinates go from 0.0 to 1.0 no matter the dimensions of the texture.</p>
+<p>Since we are only drawing a single rectangle (well, 2 triangles) we need to tell WebGL which place in the texture each point in the rectangle corresponds to. We'll pass this information from the vertex shader to the fragment shader using a special kind of variable called a 'varying'. It's called a varying because it varies. WebGL will interpolate the values we provide in the vertex shader as it draws each pixel using the fragment shader.</p>
+<p>Using the vertex shader from the end of previous section we need to add an attribute to pass in texture coordinates and then pass those on to the fragment shader.</p>
+<pre class="prettyprint"><span class="pln">attribute vec2 a_texCoord</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+varying vec2 v_texCoord</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="pun">...</span><span class="pln">
+   </span><span class="com">// pass the texCoord to the fragment shader</span><span class="pln">
+   </span><span class="com">// The GPU will interpolate this value between points</span><span class="pln">
+   v_texCoord </span><span class="pun">=</span><span class="pln"> a_texCoord</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>Then we supply a fragment shader to look up colors from the texture.</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-fragment-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-fragment"</span><span class="tag">&gt;</span><span class="pln">
+precision mediump </span><span class="kwd">float</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// our texture</span><span class="pln">
+uniform sampler2D u_image</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// the texCoords passed in from the vertex shader.</span><span class="pln">
+varying vec2 v_texCoord</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="com">// Look up a color from the texture.</span><span class="pln">
+   gl_FragColor </span><span class="pun">=</span><span class="pln"> texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>Finally we need to load an image, create a texture and copy the image into the texture. Because we are in a browser images load asynchronously so we have to re-arrange our code a little to wait for the texture to load. Once it loads we'll draw it.</p>
+<pre class="prettyprint"><span class="kwd">function</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> image </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Image</span><span class="pun">();</span><span class="pln">
+  image</span><span class="pun">.</span><span class="pln">src </span><span class="pun">=</span><span class="pln"> </span><span class="str">"http://someimage/on/our/server"</span><span class="pun">;</span><span class="pln">  </span><span class="com">// MUST BE SAME DOMAIN!!!</span><span class="pln">
+  image</span><span class="pun">.</span><span class="pln">onload </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    render</span><span class="pun">(</span><span class="pln">image</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> render</span><span class="pun">(</span><span class="pln">image</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+  </span><span class="com">// all the code we had before.</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+  </span><span class="com">// look up where the texture coordinates need to go.</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> texCoordLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getAttribLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"a_texCoord"</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// provide texture coordinates for the rectangle.</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> texCoordBuffer </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createBuffer</span><span class="pun">();</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindBuffer</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> texCoordBuffer</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bufferData</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ARRAY_BUFFER</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Float32Array</span><span class="pun">([</span><span class="pln">
+      </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0.0</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">1.0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1.0</span><span class="pun">]),</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">STATIC_DRAW</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">enableVertexAttribArray</span><span class="pun">(</span><span class="pln">texCoordLocation</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">vertexAttribPointer</span><span class="pun">(</span><span class="pln">texCoordLocation</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">FLOAT</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Create a texture.</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> texture </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createTexture</span><span class="pun">();</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> texture</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Set the parameters so we can render any size image.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_WRAP_S</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">CLAMP_TO_EDGE</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_WRAP_T</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">CLAMP_TO_EDGE</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_MIN_FILTER</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">NEAREST</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_MAG_FILTER</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">NEAREST</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Upload the image into the texture.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texImage2D</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">UNSIGNED_BYTE</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>And here's the image rendered in WebGL.</p>
+<iframe class="webgl_example" width="400" height="300" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image.htm"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image.htm" target="_blank">click here to open in a separate window</a></p>
+<p>Not too exciting so let's manipulate that image. How about just swapping red and blue?</p>
+<pre class="prettyprint"><span class="pun">...</span><span class="pln">
+gl_FragColor </span><span class="pun">=</span><span class="pln"> texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord</span><span class="pun">).</span><span class="pln">bgra</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">...</span></pre>
+
+<p>And now red and blue are swapped.</p>
+<iframe class="webgl_example" width="400" height="300" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-red2blue.htm"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-red2blue.htm" target="_blank">click here to open in a separate window</a></p>
+<p>What if we want to do image processing that actually looks at other pixels? Since WebGL references textures in texture coordinates which go from 0.0 to 1.0 then we can calculate how much to move for 1 pixel with the simple math <code>onePixel = 1.0 / textureSize</code>.</p>
+<p>Here's a fragment shader that averages the left and right pixels of each pixel in the texture.</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-fragment-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-fragment"</span><span class="tag">&gt;</span><span class="pln">
+precision mediump </span><span class="kwd">float</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// our texture</span><span class="pln">
+uniform sampler2D u_image</span><span class="pun">;</span><span class="pln">
+uniform vec2 u_textureSize</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// the texCoords passed in from the vertex shader.</span><span class="pln">
+varying vec2 v_texCoord</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="com">// compute 1 pixel in texture coordinates.</span><span class="pln">
+   vec2 onePixel </span><span class="pun">=</span><span class="pln"> vec2</span><span class="pun">(</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> u_textureSize</span><span class="pun">;</span><span class="pln">
+
+   </span><span class="com">// average the left, middle, and right pixels.</span><span class="pln">
+   gl_FragColor </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">
+       texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+       texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln">onePixel</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">))</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+       texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> vec2</span><span class="pun">(-</span><span class="pln">onePixel</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">)))</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> </span><span class="lit">3.0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>We then need to pass in the size of the texture from JavaScript.</p>
+<pre class="prettyprint"><span class="pun">...</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> textureSizeLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getUniformLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"u_textureSize"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+</span><span class="com">// set the size of the image</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform2f</span><span class="pun">(</span><span class="pln">textureSizeLocation</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span></pre>
+
+<p>Compare to the un-blurred image above.</p>
+<iframe class="webgl_example" width="400" height="300" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-blend.htm"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-blend.htm" target="_blank">click here to open in a separate window</a></p>
+<p>Now that we know how to reference other pixels let's use a convolution kernel to do a bunch of common image processing. In this case we'll use a 3x3 kernel. A convolution kernel is just a 3x3 matrix where each entry in the matrix represents how much to multiply the 8 pixels around the pixel we are rendering. We then divide the result by the weight of the kernel (the sum of all values in the kernel) or 1.0, which ever is greater. <a href="http://docs.gimp.org/en/plug-in-convmatrix.html">Here's a pretty good article on it</a>. And <a href="http://www.codeproject.com/KB/graphics/ImageConvolution.aspx">here's another article showing some actual code if you were to write this by hand in C++</a>.</p>
+<p>In our case we're going to do that work in the shader so here's the new fragment shader.</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-fragment-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-fragment"</span><span class="tag">&gt;</span><span class="pln">
+precision mediump </span><span class="kwd">float</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// our texture</span><span class="pln">
+uniform sampler2D u_image</span><span class="pun">;</span><span class="pln">
+uniform vec2 u_textureSize</span><span class="pun">;</span><span class="pln">
+uniform </span><span class="kwd">float</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">9</span><span class="pun">];</span><span class="pln">
+
+</span><span class="com">// the texCoords passed in from the vertex shader.</span><span class="pln">
+varying vec2 v_texCoord</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   vec2 onePixel </span><span class="pun">=</span><span class="pln"> vec2</span><span class="pun">(</span><span class="lit">1.0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> u_textureSize</span><span class="pun">;</span><span class="pln">
+   vec4 colorSum </span><span class="pun">=</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">3</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">4</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">5</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">6</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">7</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     texture2D</span><span class="pun">(</span><span class="pln">u_image</span><span class="pun">,</span><span class="pln"> v_texCoord </span><span class="pun">+</span><span class="pln"> onePixel </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">))</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> u_kernel</span><span class="pun">[</span><span class="lit">8</span><span class="pun">]</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
+   </span><span class="kwd">float</span><span class="pln"> kernelWeight </span><span class="pun">=</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">3</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">4</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">5</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">6</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">7</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln">
+     u_kernel</span><span class="pun">[</span><span class="lit">8</span><span class="pun">]</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
+
+   </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">kernelWeight </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="lit">0.0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     kernelWeight </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">;</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+
+   </span><span class="com">// Divide the sum by the weight but just use rgb</span><span class="pln">
+   </span><span class="com">// we'll set alpha to 1.0</span><span class="pln">
+   gl_FragColor </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">((</span><span class="pln">colorSum </span><span class="pun">/</span><span class="pln"> kernelWeight</span><span class="pun">).</span><span class="pln">rgb</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.0</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>In JavaScript we need to supply a convolution kernel.</p>
+<pre class="prettyprint"><span class="pun">...</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> kernelLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getUniformLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"u_kernel[0]"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> edgeDetectKernel </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pln">
+</span><span class="pun">];</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform1fv</span><span class="pun">(</span><span class="pln">kernelLocation</span><span class="pun">,</span><span class="pln"> edgeDetectKernel</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span></pre>
+
+<p>And voila... Use the drop down list to select different kernels.</p>
+<iframe class="webgl_example" width="400" height="300" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-3x3-convolution.htm"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-3x3-convolution.htm" target="_blank">click here to open in a separate window</a></p>
+<p>I hope this has convinced you image processing in WebGL is pretty simple. Next up I'll go over how to apply more than one effect to the image.</p>
+
+<h3 id="toc-glslvariablenaming">What's with the a_, u_, and v_ prefixes in from of variables in GLSL?</h3>
+<p>
+That's just a naming convention. a_ for attributes which is the data provided by buffers. u_ for uniforms which are inputs to the shaders, v_ for varyings which are values passed from a vertex shader to a fragment shader and interpolated (or varied) between the vertices for each pixel drawn.
+</p>
+
+    <h2 id="toc-webglimageprocessingcontinued">Applying multiple effects</h2>
+<p>The next most obvious question for image processing is how do apply multiple effects?
+<!--more-->
+Well, you could try to generate shaders on the fly. Provide a UI that lets the user select the effects he wants to use then generate a shader that does all of the effects. That might not always be possible though that technique is often used to <a href="http://www.youtube.com/watch?v=cQUn0Zeh-0Q">create effects for real time graphics</a>.</p>
+<p>A more flexible way is to use 2 more textures and render to each texture in turn, ping ponging back and forth and applying the next effect each time.</p>
+<blockquote><pre>Original Image -&gt; [Blur]        -&gt; Texture 1
+Texture 1      -&gt; [Sharpen]     -&gt; Texture 2
+Texture 2      -&gt; [Edge Detect] -&gt; Texture 1
+Texture 1      -&gt; [Blur]        -&gt; Texture 2
+Texture 2      -&gt; [Normal]      -&gt; Canvas</pre></blockquote>
+
+<p>To do this we need to create framebuffers. In WebGL and OpenGL, a Framebuffer is actually a poor name. A WebGL/OpenGL Framebuffer is really just a collection of state and not actually a buffer of any kind. But, by attaching a texture to a framebuffer we can render into that texture. </p>
+<p>First let's turn the old texture creation code into a function</p>
+<pre class="prettyprint"><span class="kwd">function</span><span class="pln"> createAndSetupTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> texture </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createTexture</span><span class="pun">();</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> texture</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Set up texture so we can render any size image and so we are</span><span class="pln">
+  </span><span class="com">// working with pixels.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_WRAP_S</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">CLAMP_TO_EDGE</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_WRAP_T</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">CLAMP_TO_EDGE</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_MIN_FILTER</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">NEAREST</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texParameteri</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_MAG_FILTER</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">NEAREST</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="kwd">return</span><span class="pln"> texture</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Create a texture and put the image in it.</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> originalImageTexture </span><span class="pun">=</span><span class="pln"> createAndSetupTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">texImage2D</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">UNSIGNED_BYTE</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">);</span></pre>
+
+<p>And now let's use that function to make 2 more textures and attach them to 2 framebuffers.</p>
+<pre class="prettyprint"><span class="com">// create 2 textures and attach them to framebuffers.</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> textures </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> framebuffers </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> ii </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> ii </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">ii</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> texture </span><span class="pun">=</span><span class="pln"> createAndSetupTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">);</span><span class="pln">
+  textures</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">texture</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// make the texture the same size as the image</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">texImage2D</span><span class="pun">(</span><span class="pln">
+      gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">height</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+      gl</span><span class="pun">.</span><span class="pln">RGBA</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">UNSIGNED_BYTE</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Create a framebuffer</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> fbo </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">createFramebuffer</span><span class="pun">();</span><span class="pln">
+  framebuffers</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">fbo</span><span class="pun">);</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindFramebuffer</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">FRAMEBUFFER</span><span class="pun">,</span><span class="pln"> fbo</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Attach a texture to it.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">framebufferTexture2D</span><span class="pun">(</span><span class="pln">
+      gl</span><span class="pun">.</span><span class="pln">FRAMEBUFFER</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">COLOR_ATTACHMENT0</span><span class="pun">,</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> texture</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>Now let's make a set of kernels and then a list of them to apply.</p>
+<pre class="prettyprint"><span class="com">// Define several convolution kernels</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> kernels </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  normal</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+  </span><span class="pun">],</span><span class="pln">
+  gaussianBlur</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="lit">0.045</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.122</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.045</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0.122</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.332</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.122</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0.045</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.122</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.045</span><span class="pln">
+  </span><span class="pun">],</span><span class="pln">
+  unsharpen</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">9</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pln">
+  </span><span class="pun">],</span><span class="pln">
+  emboss</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+     </span><span class="pun">-</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+     </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+      </span><span class="lit">0</span><span class="pun">,</span><span class="pln">  </span><span class="lit">1</span><span class="pun">,</span><span class="pln">  </span><span class="lit">2</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+</span><span class="com">// List of effects to apply.</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> effectsToApply </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+  </span><span class="str">"gaussianBlur"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"emboss"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"gaussianBlur"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"unsharpen"</span><span class="pln">
+</span><span class="pun">];</span></pre>
+
+<p>And finally let's apply each one, ping ponging which texture we are rendering too</p>
+<pre class="prettyprint"><span class="com">// start with the original image</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">bindTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> originalImageTexture</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// don't y flip images while drawing to the textures</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform1f</span><span class="pun">(</span><span class="pln">flipYLocation</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// loop through each effect we want to apply.</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> ii </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> ii </span><span class="pun">&lt;</span><span class="pln"> effectsToApply</span><span class="pun">.</span><span class="pln">length</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">ii</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// Setup to draw into one of the framebuffers.</span><span class="pln">
+  setFramebuffer</span><span class="pun">(</span><span class="pln">framebuffers</span><span class="pun">[</span><span class="pln">ii </span><span class="pun">%</span><span class="pln"> </span><span class="lit">2</span><span class="pun">],</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> image</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span><span class="pln">
+
+  drawWithKernel</span><span class="pun">(</span><span class="pln">effectsToApply</span><span class="pun">[</span><span class="pln">ii</span><span class="pun">]);</span><span class="pln">
+
+  </span><span class="com">// for the next draw, use the texture we just rendered to.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindTexture</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TEXTURE_2D</span><span class="pun">,</span><span class="pln"> textures</span><span class="pun">[</span><span class="pln">ii </span><span class="pun">%</span><span class="pln"> </span><span class="lit">2</span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// finally draw the result to the canvas.</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform1f</span><span class="pun">(</span><span class="pln">flipYLocation</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">);</span><span class="pln">  </span><span class="com">// need to y flip for canvas</span><span class="pln">
+setFramebuffer</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span><span class="pln">
+drawWithKernel</span><span class="pun">(</span><span class="str">"normal"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> setFramebuffer</span><span class="pun">(</span><span class="pln">fbo</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// make this the framebuffer we are rendering to.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">bindFramebuffer</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">FRAMEBUFFER</span><span class="pun">,</span><span class="pln"> fbo</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Tell the shader the resolution of the framebuffer.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">uniform2f</span><span class="pun">(</span><span class="pln">resolutionLocation</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">);</span><span class="pln">
+
+  </span><span class="com">// Tell webgl the viewport setting needed for framebuffer.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">viewport</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> width</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> drawWithKernel</span><span class="pun">(</span><span class="pln">name</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="com">// set the kernel</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">uniform1fv</span><span class="pun">(</span><span class="pln">kernelLocation</span><span class="pun">,</span><span class="pln"> kernels</span><span class="pun">[</span><span class="pln">name</span><span class="pun">]);</span><span class="pln">
+
+  </span><span class="com">// Draw the rectangle.</span><span class="pln">
+  gl</span><span class="pun">.</span><span class="pln">drawArrays</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">TRIANGLES</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>Here's a working version with a slightly more flexible UI. Check the effects to turn them on. Drag the effects to reorder how they are applied.</p>
+<iframe class="webgl_example" width="400" height="340" src="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-processing.htm"></iframe>
+
+<p><a class="webgl_center" href="./WebGL Fundamentals - HTML5 Rocks_files/webgl-2d-image-processing.htm" target="_blank">click here to open in a separate window</a></p>
+<p>Some things I should go over.<br>
+</p>
+<p>Calling <code>gl.bindFramebuffer</code> with <code>null</code> tells WebGL you want to render to the canvas instead of to one of your framebuffers.</p>
+<p>WebGL has to convert from clipspace back into pixels. It does this based on the settings of <code>gl.viewport</code>. The settings of <code>gl.viewport</code> default to the size of the canvas when we initialize WebGL. Since the framebuffers we are rendering into are a different size then the canvas we need to set the viewport appropriately.</p>
+<p>Finally in the WebGL fundamentals examples we flipped the Y coordinate when rendering because WebGL displays the canvas with 0,0 being the bottom left corner instead of the more traditional for 2D top left. That's not needed when rendering to a framebuffer. Because the framebuffer is never displayed, which part is top and bottom is irrelevant. All that matters is that pixel 0,0 in the framebuffer corresponds to 0,0 in our calculations. To deal with this I made it possible to set whether to flip or not by adding one more input into the shader.</p>
+<pre class="prettyprint"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"2d-vertex-shader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"x-shader/x-vertex"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+uniform </span><span class="kwd">float</span><span class="pln"> u_flipY</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="pun">...</span><span class="pln">
+   gl_Position </span><span class="pun">=</span><span class="pln"> vec4</span><span class="pun">(</span><span class="pln">clipSpace </span><span class="pun">*</span><span class="pln"> vec2</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> u_flipY</span><span class="pun">),</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre>
+
+<p>And then we can set it when we render with</p>
+<pre class="prettyprint"><span class="pun">...</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> flipYLocation </span><span class="pun">=</span><span class="pln"> gl</span><span class="pun">.</span><span class="pln">getUniformLocation</span><span class="pun">(</span><span class="pln">program</span><span class="pun">,</span><span class="pln"> </span><span class="str">"u_flipY"</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+</span><span class="com">// don't flip</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform1f</span><span class="pun">(</span><span class="pln">flipYLocation</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+</span><span class="com">// flip</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">uniform1f</span><span class="pun">(</span><span class="pln">flipYLocation</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">);</span></pre>
+
+<p>I kept this example simple by using single GLSL program that can achieve multiple effects. If you wanted to do full on image processing you'd probably need many GLSL programs. A program for hue, saturation and luminance adjustment. Another for brightness and contrast. One for inverting, another for adjusting levels, etc. You'd need to change the code to switch GLSL programs and update the parameters for that particular program. I'd considered writing that example but it's an exercise best left to the reader because multiple GLSL programs each with their own parameter needs probably means some major refactoring to keep it all from becoming a big mess of spaghetti. </p>
+<p>I hope this and the preceding examples have made WebGL seem a little more approachable and I hope starting with 2D helps make WebGL a little easier to understand. If I find the time I'll try to write a few more articles about how to do 3D as well as more details on what WebGL is really doing under the hood.</p>
+
+    <h2 id="toc-webglalpha">WebGL and Alpha</h2>
+    <p>I've noticed some OpenGL developers having issues with how WebGL treats alpha in the backbuffer (ie, the canvas), so I thought it might be good to go over some of the differences between WebGL and OpenGL related to alpha.
+<!--more-->
+</p><p>The biggest difference between OpenGL and WebGL is that OpenGL renders to a backbuffer that is not composited with anything so, or effectively not composited with anything by the OS's window manager, so it doesn't matter what your alpha is.</p>
+<p>WebGL is composited by the browser with the web page and the default is to use pre-multiplied alpha the same as .png &lt;img&gt; tags with transparency and 2d canvas tags.</p>
+<p>WebGL has several ways to make this more like OpenGL.</p>
+<h3>#1) Tell WebGL you want it composited with non-premultiplied alpha</h3>
+
+<pre class="prettyprint"><span class="pln">gl </span><span class="pun">=</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">getContext</span><span class="pun">(</span><span class="str">"experimental-webgl"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">premultipliedAlpha</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">});</span></pre>
+
+<p>The default is true.</p>
+<p>Of course the result will still be composited over page with whatever background color ends up being under the canvas  (the canvas's background color, the canvas's container background color, the page's background color, the stuff behind the canvas if the canvas has a z-index &gt; 0, etc....) in other words, the color CSS defines for that area of the webpage.</p>
+<p>I really good way to find if you have any alpha problems is to set the canvas's background to a bright color like red. You'll immediately see what is happening.</p>
+<pre class="prettyprint"><span class="tag">&lt;canvas</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="kwd">background</span><span class="pun">:</span><span class="pln"> red</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/canvas&gt;</span></pre>
+
+<p>You could also set it to black which will hide any alpha issues you have.</p>
+<h3>#2) Tell WebGL you don't want alpha in the backbuffer</h3>
+
+<pre class="prettyprint"><span class="pln">gl </span><span class="pun">=</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">getContext</span><span class="pun">(</span><span class="str">"experimental-webgl"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">alpha</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">});</span></pre>
+
+<p>This will make it act more like OpenGL since the backbuffer will only have RGB. This is probably the best option because a good browser could see that you have no alpha and actually optimize the way WebGL is composited. Of course that also means it actually won't have alpha in the backbuffer so if you are using alpha in the backbuffer for some purpose that might not work for you. Few apps that I know of use alpha in the backbuffer. I think arguably this should have been the default.</p>
+<h3>#3) Clear alpha at the end of your rendering</h3>
+
+<pre class="prettyprint"><span class="pun">..</span><span class="pln">
+renderScene</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">..</span><span class="pln">
+</span><span class="com">// Set the backbuffer's alpha to 1.0</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">clearColor</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">colorMask</span><span class="pun">(</span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">COLOR_BUFFER_BIT</span><span class="pun">);</span></pre>
+
+<p>Clearing is generally very fast as there is a special case for it in most hardware. I did this in most of my demos. If I was smart I'd switch to method #2 above. Maybe I'll do that right after I post this. It seems like most WebGL libraries should default to this method. Those few developers that are actually using alpha for compositing effects can ask for it. The rest will just get the best perf and the least surprises.</p>
+<h3>#4) Clear the alpha once then don't render to it anymore</h3>
+
+<pre class="prettyprint"><span class="com">// At init time. Clear the back buffer.</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">clearColor</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">COLOR_BUFFER_BIT</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Turn off rendering to alpha</span><span class="pln">
+gl</span><span class="pun">.</span><span class="pln">colorMask</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln"> </span></pre>
+
+<p>Of course if you are rendering to your own framebuffers you may need to turn rendering to alpha back on and then turn it off again when you switch to rendering to the canvas.</p>
+<h3>#5) Handling Images</h3>
+
+<p>Also, if you are loading PNG files with alpha into textures, the default is that their alpha is pre-multiplied which is generally NOT the way most games do things. If you want to prevent that behavior you need to tell WebGL with</p>
+<pre class="prettyprint"><span class="pln">gl</span><span class="pun">.</span><span class="pln">pixelStorei</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">UNPACK_PREMULTIPLY_ALPHA_WEBGL</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span></pre>
+
+<h3>#6) Using a blending equation that works with pre-multiplied alpha.</h3>
+
+<p>Almost all OpenGL apps I've writing or worked on use</p>
+<pre class="prettyprint"><span class="pln">gl</span><span class="pun">.</span><span class="pln">blendFunc</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">SRC_ALPHA</span><span class="pun">,</span><span class="pln"> gl_ONE_MINUS_SRC_ALPHA</span><span class="pun">);</span></pre>
+
+<p>That works for non pre-multiplied alpha textures.</p>
+<p>If you actually want to work with pre-multiplied alpha textures then you probably want</p>
+<pre class="prettyprint"><span class="pln">gl</span><span class="pun">.</span><span class="pln">blendFunc</span><span class="pun">(</span><span class="pln">gl</span><span class="pun">.</span><span class="pln">ONE</span><span class="pun">,</span><span class="pln"> gl_ONE_MINUS_SRC_ALPHA</span><span class="pun">);</span></pre>
+
+<p>Those are the methods I'm aware of. If you know of more please post them below.</p>
+
+<script type="text/javascript" src="./WebGL Fundamentals - HTML5 Rocks_files/lesson.js"></script>
+
+      </div>
+    </section>
+  </article>
+
+  
+  <section class="disqus pattern-bg-lighter">
+
+    <div id="disqus" class="container">
+
+      <h2>Comments</h2>
+
+      <div id="disqus_thread">
+
+        <a href="http://www.html5rocks.com/en/tutorials/webgl/webgl_fundamentals/#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/">22</a>
+
+      </div>
+    </div>
+
+    <noscript>
+      &lt;p class="center"&gt;
+        &lt;strong&gt;
+          &lt;a href="http://disqus.com/?ref_noscript"&gt;Please enable JavaScript to view the comments powered by Disqus.&lt;/a&gt;
+        &lt;/strong&gt;
+      &lt;/p&gt;
+    </noscript>
+
+    <script>
+
+      var disqus_shortname = 'html5rocks';
+      var disqus_identifier = 'http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/';
+      var disqus_url = 'http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/';
+      var disqus_developer = 0;
+
+      var disqus_config = function () {
+        var funky_language_code_mapping = {
+          'de': 'de_inf',
+          'es': 'es_ES',
+          'pt': 'pt_EU',
+          'sr': 'sr_CYRL',
+          'sv': 'sv_SE',
+          'zh': 'zh_HANT'
+        };
+        this.language = funky_language_code_mapping['en'] ||
+                        'en';
+
+        this.callbacks.onReady = [ function () {
+                                      try {
+                                        ga('send', 'event', 'View comments');
+                                      } catch(err){}
+                                   } ];
+        this.callbacks.onNewComment = [ function (comment) {
+                                          try {
+                                            ga('send', 'event', 'Commented');
+                                          } catch(err){}
+                                        } ];
+      };
+
+      window.addEventListener('load', function(e) {
+
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        c.async = true;
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        sp.insertBefore(c, s);
+
+        if (window.location.hash === '#disqus_thread')
+          loadComments();
+
+      }, false);
+
+      var disqus_loaded = false;
+      function loadComments() {
+
+        if (disqus_loaded)
+          return;
+
+        disqus_loaded = true;
+
+        ga('send', 'event', 'Interactions', 'Comments', 'Comments Loaded');
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+
+        var disqusContainer = document.getElementById('disqus');
+        disqusContainer.classList.add('active');
+
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        sp.insertBefore(dsq, s);
+      }
+
+      function outgoing(url) {
+        try {
+          ga('send', 'event', 'Outbound Links' , url);
+        } catch(err){}
+      }
+      // Open external links (also that don't have a target defined) in a new tab.
+      var externLinks = document.querySelectorAll('article.tutorial a[href^="http"]:not([target])');
+      for(var i = 0, a; a = externLinks[i]; ++i) {
+        a.target = '_blank';
+        a.addEventListener('click', new Function('outgoing(' + '"' + a.href.replace(/.*?:\/\//g, "") + '"' + ');'));
+      }
+
+      var loadCommentsButtons = document.querySelectorAll('.load-comments');
+      for(var l = 0; l < loadCommentsButtons.length; l++)
+        loadCommentsButtons[l].addEventListener('click', loadComments);
+
+    </script>
+  </section>
+  
+
+  <footer>
+    <div class="container">
+
+      
+        <h1>Next steps</h1>
+
+        
+
+        <aside class="panel share">
+          <h2>Share</h2>
+
+            <a href="https://twitter.com/share?url=http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/&text=WebGL%20Fundamentals&lang=en&via=ChromiumDev&related=ChromiumDev" class="twitter" target="_blank">Twitter</a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/" class="facebook" target="_blank">Facebook</a>
+
+            <a href="https://plus.google.com/share?url=http://www.html5rocks.com/tutorials/webgl/webgl_fundamentals/" class="gplus" onclick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">Google+</a>
+
+        </aside>
+
+        <aside class="panel rss">
+          <h2>Subscribe</h2>
+          <p>Enjoyed this article? Grab the <a href="http://feeds.feedburner.com/html5rocks">RSS feed</a> and stay up-to-date.</p>
+        </aside>
+
+      
+
+      <p class="licensing">
+      
+        Except as otherwise <a href="http://code.google.com/policies.html#restrictions">noted</a>, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+      
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+    window.isCompatible = function() {
+      
+  return !!Modernizr.webgl
+
+    };
+
+    if (isCompatible() === false) {
+      document.getElementById('notcompatible').className = '';
+    }
+
+    function _prettyPrint() {
+      if (typeof customPrettyPrintLanguage != 'undefined') {
+        customPrettyPrintLanguage();
+      }
+      prettyPrint();
+    }
+  </script>
+  <script async="" src="./WebGL Fundamentals - HTML5 Rocks_files/prettify.min.js" onload="_prettyPrint()"></script>
+  <!-- Google Tag Manager -->
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-XXXX"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MB3LRF');</script>
+<!-- End Google Tag Manager -->
+
+
+  </div>
+
+  <script>
+  (function() {
+
+    // Kill feedburner and marketing tracking arguments, but let them register
+    // before we do it.
+    setTimeout(function() {
+      if (/^\?utm_/.test(document.location.search) &&
+          window.history.replaceState) {
+        window.history.replaceState(
+            {}, '', document.location.href.replace(/\?utm_.*/, ''));
+      }
+    }, 2000);
+
+    var siteHeader = document.getElementById('siteheader');
+    var navToggle = document.getElementById('navtoggle');
+    var siteNav = document.getElementById('sitenav');
+
+    function toggle(target, forceActive) {
+
+      if (typeof toc !== 'undefined') {
+        // Switch off whichever one is not the
+        // current target
+        if (target === toc)
+          siteNav.classList.remove('active');
+        else
+          toc.classList.remove('active');
+      }
+
+      // Toggle if no force parameter is set
+      if (typeof forceActive === 'undefined') {
+        target.classList.toggle('active');
+      } else {
+        if (forceActive)
+          target.classList.add('active');
+        else
+          target.classList.remove('active');
+      }
+
+      // now find out what the set state ended up being
+      var isActive = target.classList.contains('active');
+
+      if (isActive)
+        siteHeader.classList.add('expanded');
+      else
+        siteHeader.classList.remove('expanded');
+
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      toggle(siteNav);
+      e.preventDefault();
+    });
+
+    
+
+    var tocToggle = document.getElementById('toctoggle');
+    var toc = document.getElementById('toc');
+    var articleMeta = document.getElementById('article-meta');
+    var articleContent = document.getElementById('article-content');
+    var articleMetaHeight = 0;
+    var articleMetaMaxY = 0;
+    var articleMetaMinY = 0;
+    var articleContentPadding = 200;
+
+    var tocLinks = document.querySelectorAll('.toc a');
+    for (var t = 0; t < tocLinks.length; t++)
+      tocLinks[t].addEventListener('click', onTocLinkClick);
+
+    tocToggle.addEventListener('click', function(e) {
+      toggle(toc);
+      e.preventDefault();
+    });
+
+    toc.addEventListener('click', function(e) {
+      if (e.target !== siteNav)
+        toggle(toc, false);
+    });
+
+    function onTocLinkClick() {
+      ga('send', 'event', 'Interactions', 'TOC', 'TOC Clicked');
+    }
+
+    function setMinScrollYFromMetaY() {
+      var scrollPosition = window.scrollY;
+
+      var articleMetaBounds = articleMeta.getBoundingClientRect();
+      var articleMetaTop = Math.max(352,
+          articleMetaBounds.top - 20 + scrollPosition);
+
+      articleMetaHeight = articleMetaBounds.bottom - articleMetaBounds.top;
+      articleMetaMinY = articleMetaTop;
+    }
+
+    function setMaxScrollYFromContentHeight() {
+
+      var scrollPosition = window.scrollY;
+
+      var articleContentBounds = articleContent.getBoundingClientRect();
+      var articleContentTop = articleContentBounds.top + scrollPosition;
+      var articleContentHeight = articleContentBounds.bottom - articleContentBounds.top;
+
+      articleMetaMaxY = articleContentTop +
+          articleContentHeight -
+          articleMetaHeight -
+          articleContentPadding;
+
+    }
+
+    function onScroll(e) {
+
+      if (window.scrollY >= articleMetaMinY) {
+
+        articleMeta.classList.add('sticky');
+
+        var articleMetaTop = 22 - Math.max(0, window.scrollY - articleMetaMaxY);
+        articleMeta.style.top = articleMetaTop + 'px';
+
+      } else {
+        articleMeta.classList.remove('sticky');
+        articleMeta.style.top = 'auto';
+      }
+    }
+
+    if (articleMeta.getBoundingClientRect) {
+      setMinScrollYFromMetaY();
+      setMaxScrollYFromContentHeight();
+      document.addEventListener('scroll', onScroll);
+      window.addEventListener('load', setMaxScrollYFromContentHeight, false);
+    }
+
+    
+  })();
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-15028909-1', 'auto');
+  ga('create', 'UA-49880327-4', 'auto', {'name': 'html5rocks'});
+
+  ga('send', 'pageview');
+  ga('html5rocks.send', 'pageview');
+
+  </script>
+   <!-- Google Tag Manager -->
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-XXXX"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MB3LRF');</script>
+<!-- End Google Tag Manager -->
+
+
+</body></html>

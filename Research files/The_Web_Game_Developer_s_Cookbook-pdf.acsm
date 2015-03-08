@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fulfillmentToken fulfillmentType="buy" xmlns="http://ns.adobe.com/adept">
+<distributor>urn:uuid:00000000-0000-0000-0000-000000000001</distributor>
+<operatorURL>http://books.google.com/books/acs4/fulfillment</operatorURL>
+<expiration>2014-10-18T13:24:36-07:00</expiration>
+<transaction>ge:4cc1f067-35ce-ff2e-b18c-92a9ab083954:1413662976610866</transaction>
+<userId>13331161041512418874</userId>
+<resourceItemInfo>
+<resource>urn:uuid:4cc1f067-35ce-ff2e-b18c-92a9ab083954</resource>
+<resourceItem>1</resourceItem>
+<src>http://books.google.co.uk/books/download/The_Web_Game_Developer_s_Cookbook.pdf?acsid=urn:uuid:4cc1f067-35ce-ff2e-b18c-92a9ab083954&amp;output=acs4_book_bytes&amp;ar=393787cc09497b3dce5d3f75801881d0</src>
+<downloadType>simple</downloadType>
+</resourceItemInfo>
+<hmac>xdPR7RjXbDxRmyPv+I7UArD38r8=</hmac>
+</fulfillmentToken>
