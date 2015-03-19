@@ -24,10 +24,118 @@ At the end of each of these sections, a series of aspects which will be included
 
 \subsection{Java and JSON}
 \label{subSec:Java and JSON}
+The goal of this investigation was to find a way that a Java back-end could be integrated with a 3D JavaScript based front-end which primarily uses three.js. \textcolor{red}{[SAY MORE ABOUT THIS]}
+
+\subsubsection{17/12/2014: Version 1 \textcolor{red}{[READ THROUGH EACH VERSION, I THINK THERE IS A LOT OF REPETITION]}}
+\label{subSubSection:Java and JSON: Lab 1}
+This version establishes the use of csv files as storage of data about in-game elements. A test example, servers, is used, with servers.csv (in root/resources/data).
+
+A java class was created for the retrieval of individual rows from servers.csv; ServerDataRetriever.java, which retrieves rows based on a supplied "key" string; All rows from the file are added to an array list, which is checked through iteratively using a for loop, which limited by the size of the array list: if a row string containing the key string is found in the array list, it is assigned as the output of the class's .getRow() method. 
+ServerDataRetriever.java retrieves servers.csv's file path by getting its own runtime file path from the class loader, which it converts to a character array, removes all elements of it that do not correspond to the root of the application folder, and finally converts it to a string and concatenates the rest of the file path to it. 
+Specifically, it does this adding all characters to the character array, then adding all but the last 26 of them to the file path string, with 26 being a known quantity of characters beyond the root folder in the class loader pathway for this file at run time.
+
+For testing purposes, a server with the name (and key) "Type1" is retrieved, and is displayed on General\textunderscore MainPage.jsp as a java bean. As such, no JavaScript is used in this version because this version is intended only as a test of CSV files for data storage, and retrieval of data from them as rows.
+
+\subsubsection{21/12/2014: Version 2}
+\label{subSubSection:Java and JSON: Lab 2}
+ServerRetriever was modified and renamed DataRetriever. Specifically, the getRow was modified to take one more string parameter, fileName, which is used to determine which file within the data folder to search for the specified row. This means that the one class can now be used to search any CSV file in the folder. 
+DataRetriever was modified to retrieve a newly added header row from the CSV files using method ArrayList getHeaders(), which adds these as individual strings using a for loop and an if statement which iterates through the header row as a character array, concatenating characters to a string, which is added to the output array list whenever a comma is encountered in a character array. 
+getHeaders is called from another new method, String convertToJSON(String), which itself is called by String getRow(). The method convertToJSON takes the row retrieved by getRow, adds it's CSV elements to an ArrayList in the same way that getHeaders does with the header row, and concatenates these elements with those returned by getHeaders into a JSON format string, where headers are assigned to values. 
+
+DataRetriever's pathway assignment was abstracted to a string returned by a class called DataFolderFilePathPointer.java, which is a smaller class with a final string containing the absolute resources/data pathway for the system being used, allowing for easier set up of the project on different systems. 
+
+As a test of the JSON value being retrieved, it is called as a java bean into \url{General_MainPage.jsp}, where it is called to be displayed on page in a pargraph with the id value "demo", having been parsed as a JSON object, with each element being called by it's respective header values, e.g. once added and JSONified, server "Type1" is called as obj.name.
+
+\subsubsection{21/12/2014: Version 3}
+\label{subSubSection:Java and JSON: Lab 3}
+ServerRetriever was modified and renamed DataRetriever. Specifically, the getRow was modified to take one more string parameter, fileName, which is used to determine which file within the data folder to search for the specified row. This means that the one class can now be used to search any CSV file in the folder. 
+DataRetriever was modified to retrieve a newly added header row from the CSV files using method ArrayList getHeaders(), which adds these as individual strings using a for loop and an if statement which iterates through the header row as a character array, concatenating characters to a string, which is added to the output array list whenever a comma is encountered in a character array. 
+getHeaders is called from another new method, String convertToJSON(String), which itself is called by String getRow(). The method convertToJSON takes the row retrieved by getRow, adds it's CSV elements to an ArrayList in the same way that getHeaders does with the header row, and concatenates these elements with those returned by getHeaders into a JSON format string, where headers are assigned to values. 
+
+DataRetriever's pathway assignment was abstracted to a string returned by a class called DataFolderFilePathPointer.java, which is a smaller class with a final string containing the absolute resources/data pathway for the system being used, allowing for easier set up of the project on different systems. 
+Furthermore, DataRetriever's getRows and getHeaders methods were modified by having the strings where characters from their character arrays added to their respective string ArrayList objects, which overcame a bug where the last column header and row attribute were not being added to the JSON formatted string. 
+
+For this version, \url{General_Mainpage.jsp} requests an entry from "servers.csv" with the name attribute "Type1". It retrieves it by using the getRows method of an object of class DataRetriever. 
+This data is processed in the following way:
+
+It is converted from a CSV row to a JSON format string by DataRetriever.
+in seperate instances, the JSON format string is converted to a JSON object by the functions addToLocalStorage and processServer of JavaScript file JSTest.js.
+In seperate instances, the JSON object is displayed on page by processServer, and retrieved from LocalStorage and displayed on page by function getRowFromStorage of JSTest.js ussing jQuery append functions.
+In order to test the whole process of retrieving the row, converting it to JSON format, adding it to LocalStorage and retrieving it to the page from LocalStorage, three instances of the row are displayed on-page on \url{General_MainPage.jsp}: A Java scriptlet directly displaying the raw output of DataRetriever.getRow, the converted JSON object elements displayed by function processServer, and the JSON object retrieved from LocalStorage displayed by function getRowFromStorage.
+
+\textbf{Page list:}
+\begin{itemize}
+\item \url{General_MainPage.jsp}\newline
+In this version, this page contains on-page JavaScript which parses the returned string from DataRetriever.getRow as JSON, and displays its content on page.\newline
+
+ This page references the following files:
+\begin{itemize}
+\item \textbf{Java classes and their methods:}
+
+\begin{itemize}
+
+\item \url{DataRetriever.java}
+
+\begin{itemize}
+
+\item \url{String}  \url{getRow(HttpServletRequest, HttpServletResponse, String, String)}\newline
+Adds all rows from specified CSV file to an ArrayList, checks all entries in that ArrayList for a row with which contains the String parameter (the key), outputting such a row if it is found. This method finishes by calling the method convertToJSON.
+
+\item \url{String} \url{convertToJSON(String)}\newline 
+Adds all comma-seperated elements from the row, and uses a for loop and if statement to add all of the elements in that row to an array list by iteratively checking for commas in the input string as a character array, concatenating them to a string if a comma is not found, and adding that string to a string array if a comma is found. Next, this method calls the method getHeaders, and uses its String ArrayList content to form the row into a JSON format string.
+
+\item \url{String} \url{getHeaders()}\newline 
+This uses the same iterative for loop and if statement technique as convertToJSON to get all of the CSV format elements of the first row (the column headers) of the CSV file, which are used in convertToJSON to convert its string input to JSON format.
+
+\end{itemize}
+
+\item \url{DataFolderFilePathPointer}
+
+\begin{itemize}
+\item \url{String} \url{getPathway()}\newline
+This returns the final string filePath, which is assigned by as the pathway to the web application's resources/data folder, which is called by classes which require this, such as DataRetriever.
+\end{itemize}
+
+\end{itemize}
+
+\item \textbf{JavaScript files and their functions:}
+
+\begin{itemize}
+
+\item \url{JSTest}
+
+\begin{itemize}
+
+\item \url{processServer(row)}\newline
+Takes a JSON format string (row) as its parameter (the output of DataRetriever.getRow()), which it converts to a JSON object, and retrieves elements with the JSON name tags "name", "x", "y", and "z", appending them to the "main" div of the page using the jQuery .append() method.
+
+\item \url{processServerOnPage(row)}\newline
+Works in the same way as processServer, appending the JSON elements as a string into div "demo" using document.getElementById("demo").innerHTML.
+
+\item \url{addToLocalStorage(row)}\newline
+Works in the same way as processServer, but adds the JSON elements to LocalStorage.
+
+\item \url{getRowFromStorage(row)}\newline
+Relies on addToLocalStorage, using the jQuery function .append() to add content from LocalStorage to the "main" div.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{Design decisions stemming from this investigation}
+\label{subSec: Java and JSON: Design decisions stemming from this investigation}
+
+The following decisions regarding the server-side Java conversion of data from CSV tables to JSON objects were made as a result of these investigations:
+
+\begin{itemize}
+\item JSON appears to be a data-interchange format which is particularly easy to handle client-side using reasonably simple JavaScript, and parsing data into JSON objects server side using Java objects is also relatively straightforward, therefore, JSON will be used in the project for the purpose of passing data from the server to the client.
+
+\item Subsequent research has found that the current design of \url{General_MainPage.jsp} will not work when wrapped for mobile with PhoneGap because PhoneGap and Cordova cannot interpret Java Server Page files. However, PhoneGap can wrap all standard HTML5 file types (HTML, CSS and JavaScript), and it does allow for the passage of XML and JSON data between the server and the wrapped site. Therefore, the classes developed could still be used, but packaged into Java servlets called by HTML pages, rather than as JSP files. \textcolor{red}{[CITE PHONEGAP IN LIT REVIEW, AND CITE PHONEGAP FAQ HERE]}
+\end{itemize}
 
 \subsection{Three.js}
 \label{subSec:Three.js}
-This is a log and index of experiments using Three.js, particularly with a mind to integrating the technology into the project; Blender, JSON etc. The project is divided into a series of labs, which chronicle the changes made by session.
+This is a log of experiments using Three.js, with a mind to integrating the technology into the project, and including a 3D interface. The project is divided into a series of labs, which chronicle the changes made by session.
 
 \subsubsection{Lab 1: 28/12/2015: First Three.js experiment}
 \label{subSubSec:ThreeJSExperiments:Lab1}
