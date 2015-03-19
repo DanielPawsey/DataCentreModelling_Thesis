@@ -130,7 +130,7 @@ The following decisions regarding the server-side Java conversion of data from C
 \begin{itemize}
 \item JSON appears to be a data-interchange format which is particularly easy to handle client-side using reasonably simple JavaScript, and parsing data into JSON objects server side using Java objects is also relatively straightforward, therefore, JSON will be used in the project for the purpose of passing data from the server to the client.
 
-\item Subsequent research has found that the current design of \url{General_MainPage.jsp} will not work when wrapped for mobile with PhoneGap because PhoneGap and Cordova cannot interpret Java Server Page files. However, PhoneGap can wrap all standard HTML5 file types (HTML, CSS and JavaScript), and it does allow for the passage of XML and JSON data between the server and the wrapped site. Therefore, the classes developed could still be used, but packaged into Java servlets called by HTML pages, rather than as JSP files. \textcolor{red}{[CITE PHONEGAP IN LIT REVIEW, AND CITE PHONEGAP FAQ HERE]}
+\item Subsequent research has found that the current design of \url{General_MainPage.jsp} will not work when wrapped for mobile with PhoneGap because PhoneGap and Cordova cannot interpret Java Server Page files. However, PhoneGap can wrap all standard HTML5 file types (HTML, CSS and JavaScript), and it does allow for the passage of XML and JSON data between the server and the wrapped site. Therefore, the classes developed could still be used, but packaged into Java servlets called by HTML pages, rather than as JSP files \cite{PhoneGap:FAQs}. \textcolor{red}{[CITE PHONEGAP IN LIT REVIEW]}
 \end{itemize}
 
 \subsection{Three.js}
@@ -143,11 +143,11 @@ his is a very simple HTML file displaying a rotating cube. It is a excercise in 
 
 \subsubsection{Lab 2: 30/12/2014: .Obj file loader test: Local library access}
 \label{subSubSec:ThreeJSExperiments:Lab2}
-The first stage of this lab was to reverse engineer JavaScript data found associated with \url{http://threejs.org/examples/webgl_loader_obj.html} \textcolor{red}{[CITE THIS]}, which features use of OBJLoader.js; part of the Three.js library which allows for the importation of .OBJ files for display through JavaScript.
+The first stage of this lab was to reverse engineer JavaScript data found associated with the Three.js OBJLoader demonstration \cite{ThreeJSObjLoader}, which features use of OBJLoader.js; part of the Three.js library which allows for the importation of .OBJ files for display through JavaScript.
 
-This JavaScript file first copied and tested by changing the .OBJ file link from the one within the Three.js library specified in the demo for a model of a car taken from \url{http://tf3dm.com/3d-models/bmw850/1/obj} \textcolor{red}{[CITE THIS]}, and reskinned with a plain white texture.
+This JavaScript file first copied and tested by changing the .OBJ file link from the one within the Three.js library specified in the demo for a model of a car uploaded by a user of tf3dm.com \cite{LarsenBMWObj}, and re-skinned with a plain white texture.
 
-\subsubsection{Lab 3: 06/01/2015: .Obj file loader test: Remote library access}
+\subsubsection{Lab 3: 06/01/2015: .Obj file loader test: Remote library access \textcolor{red}{[REMOVE THIS, YOU'LL BE USING GIT]}}
 \label{subSubSec:ThreeJSExperiments:Lab3}
 A repeat of lab 2, attempting to reference the Three.js library from its location online, rather than locally
 
@@ -155,19 +155,19 @@ Unfortunatly, attempts to access the files as online resources through http://cd
 
 \subsubsection{Lab 4: 06/01/2015: Object animation tutorial}
 \label{subSubSec:ThreeJSExperiments:Lab4}
-Following of a tutorial at\url{http://code.tutsplus.com/tutorials/webgl-with-threejs-basics--net-35688} \textcolor{red}{[CITE THIS]} to develop an animated cube object, without the need to import an external .obj file into the project.
+Following of a tutorial at Tuts+ Code Tutorials \cite{Tuts+ThreeJS} to develop an animated cube object, without the need to import an external .obj file into the project.
 
 \subsubsection{Lab 5: 08/01/2015: Camera animation tutorial modification}
 \label{subSubSec:ThreeJSExperiments:Lab5}
 Lab 4 is repeated, animating the camera to spin on it's Y axis, rather than the cube object.
 
-\subsubsection{Lab 6: 12/01/2015: TrackballControl.js: A development of the page ``WebGL With Three.js: Basics"} 
+\subsubsection{Lab 6: 12/01/2015: TrackballControl.js: A development of the page \newline``WebGL With Three.js: Basics"} 
 \label{subSubSec:ThreeJSExperiments:Lab6}
-A modification of \url{http://code.tutsplus.com/tutorials/webgl-with-threejs-basics--net-35688} \textcolor{red}{[CITE THIS]}, exchanging pyramids for cubes.
+A modification of the same Tuts+ Code Tutorial used in Lab 4 \cite{Tuts+ThreeJS}, exchanging pyramids for cubes.
 
 This experiment is undertaken to explore the potential of TrackballControls.js within the Three.js library
 
-This was tested both on a Windows 7 system, and an Android tablet. The windows testing revealed that clicking and dragging on any part of the page would pan the camera around the scene, and using the mousewheel would zoom the camera into the scene (forward for zooming in, backward for zooming out). The testing on the Android tablet revealed that touching and dragging on the page rotated the camera around the scene, pinching outwards with two fingers zoomed the camera out from the scene, pinching inwards with two fingers zoomed the camera into the scene, and dragging two fingers across the screen moved the camera along an axis relative to the 3D object.
+This was tested both on a Windows 7 system, and an Android tablet. The windows testing revealed that clicking and dragging on any part of the page would pan the camera around the scene, and using the mouse-wheel would zoom the camera into the scene (forward for zooming in, backward for zooming out). The testing on the Android tablet revealed that touching and dragging on the page rotated the camera around the scene, pinching outwards with two fingers zoomed the camera out from the scene, pinching inwards with two fingers zoomed the camera into the scene, and dragging two fingers across the screen moved the camera along an axis relative to the 3D object.
 
 \subsubsection{Lab 7: 12/01/2015: A single lit object viewed by a trackball controlled camera}
 \label{subSubSec:ThreeJSExperiments:Lab7}
@@ -183,13 +183,13 @@ An attempt was made to produce variable colour and three.js spotlights, controll
 
 \subsubsection{Lab 10: 21/01/2015: Implementation of three.js voxel painter at ``three.js webgl - interactive - voxel painter"}
 \label{subSubSec:ThreeJSExperiments:Lab10}
-This is an implementation of source code found at \url{http://threejs.org/examples/webgl_interactive_voxelpainter.html} \textcolor{red}{[CITE THIS PROPERLY]}, which displays a three.js based voxel painting canvas.
+This is an implementation of source code found at a Three.js demonstration, which displays a three.js based voxel painting canvas \cite{ThreeJSVoxelPainter}.
 
-This implements the use of "voxels", or volumetric pixels, which are added as coloured cubes to a three dimentional grid plane. This makes an interesting potential basis for the data centre modelling application: This grid-plane system could be used, with the voxels replaced by 3D objects representing items being added to the data centre floor.
+This implements the use of "voxels", or volumetric pixels, which are added as coloured cubes to a three dimensional grid plane. This makes an interesting potential basis for the data centre modelling application: This grid-plane system could be used, with the voxels replaced by 3D objects representing items being added to the data centre floor.
 
 \subsubsection{Lab 11: 24/01/2015: Combination of three.js voxel painter with TrackballCamera.js}
 \label{subSubSec:ThreeJSExperiments:Lab11}
-This experiment brings together two different projects, Lab 7 (and by extention \url{http://threejs.org/examples/webgl_interactive_voxelpainter.html} \textcolor{red}{[CITE THIS]}) and \textcolor{red}{three.js - interactive - voxel painter [CITE THIS PROPERLY- IT WAS CITED IN LAB 10]}, producing a 3D voxel painter, using a three.js rollover mesh, a rollover helper when the cursor passes over the mesh, and allowing a black 3D cube to be placed wherever the rollover helper is when the mouse is clicked, and for the camera to be moved around the scene by the by clicking and dragging the cursor, making for intuitive control of the voxel painter, including camera relocation.
+This experiment brings together two different projects, Lab 7 (and by extension the three.js voxel painter demonstration \cite{ThreeJSVoxelPainter}), producing a 3D voxel painter, using a three.js roll-over mesh, a roll-over helper when the cursor passes over the mesh, and allowing a black 3D cube to be placed wherever the roll-over helper is when the mouse is clicked, and for the camera to be moved around the scene by the by clicking and dragging the cursor, making for intuitive control of the voxel painter, including camera relocation.
 
 \subsubsection{Lab 12: 04/03/2015: Inclusion of 3D objects generated from JSON files into Lab-11}
 \label{subSubSec:ThreeJSExperiments:Lab12}
@@ -201,12 +201,12 @@ Unlike lab-8, the file used to generate the 3D cones placed by clicking on the g
 \label{subSubSec:ThreeJSExperiments:Lab13}
 This is a deelopment of lab-12, decomposing it into a single JavaScript file which call various JavaScript classes, each of which is contained within it's own JavaScript file. These classes each encapsulate a single aspect of the model, for example, RolloverCursor handles the drawing of the rollover cursor cube, and Skybox handles the drawing of the skybox.
 
-Essentially, the classes are functions, and their operations are nested functions, while importation of functions into the namespace is handled as JavaScript inclusions within the HTML document calling them. The static context from which objects of these classes are constructed, and their operations are called is the unencapsulated part at the beginning of the calling class (henceforth the main class, which in this context is ThreeJSExperiments Lab13.js. This idea follows from the tutorial at \textcolor{red}{Scorchsoft | Javascript basic object / class stucture [CITE THIS PROPERLY IN THE ESSAY]}.
+Essentially, the classes are functions, and their operations are nested functions, while importation of functions into the namespace is handled as JavaScript inclusions within the HTML document calling them. The static context from which objects of these classes are constructed, and their operations are called is the un-encapsulated part at the beginning of the calling class (henceforth the main class, which in this context is ThreeJSExperiments Lab13.js. This idea follows from the tutorial at Scorchsoft.com \cite{ScorchSoftJavaScriptObjectOrientation}.
 
 This lab includes a number of commits to a GIT repository, outlined below:
 
 \begin{enumerate}
-\item \textbf{07/03/2015: Commit ID a1ba56d:} Created the folder web/js/lab13 as a container for experimental changes to ThreeJSExperiments\textunderscore Lab12.js, which are then added to web/js/ThreeJSExperiments\textunderscore Lab13.js. ThreeJSExperiments \textunderscore Lab13a was created, which features all of the functionality required to draw the grid-plain decomposed into function draw of pseudo-class Grid. This approach to object-oriented programming in JavaScript was found at \textcolor{red}{Scorchsoft | Javascript basic object / class stucture. [CITE THIS PROPERLY IN THE ESSAY]}.
+\item \textbf{07/03/2015: Commit ID a1ba56d:} Created the folder web/js/lab13 as a container for experimental changes to ThreeJSExperiments\textunderscore Lab12.js, which are then added to web/js/ThreeJSExperiments\textunderscore Lab13.js. ThreeJSExperiments \textunderscore Lab13a was created, which features all of the functionality required to draw the grid-plain decomposed into function draw of pseudo-class Grid. This approach to object-oriented programming in JavaScript was found at Scorchsoft.com \cite{ScorchSoftJavaScriptObjectOrientation}.
 
 \item \textbf{07/03/2015: Commit ID aa241ba:} Further extended pseudo-class Grid within ThreeJSExperiments\textunderscore Lab13a.js with a constructor which is called by default, and commented-out code for private and public attributes.
 
@@ -224,11 +224,11 @@ This lab includes a number of commits to a GIT repository, outlined below:
 The following decisions regarding the front-end JavaScript 3D model interface were made as a result of these investigations:
 
 \begin{itemize}
-\item Imported three-dimensional models would be used, drawn from external data files. JSON format object files were chosen over .obj format files due to their being natively supported by the three.js library, and thus easier to parse, and because utilities \textcolor{red}{[CITE OBJ TO JSON]} exist which can convert .obj files to JSON files.
+\item Imported three-dimensional models would be used, drawn from external data files. JSON format object files were chosen over .obj format files due to their being natively supported by the three.js library, and thus easier to parse, and because utilities exist which can convert .obj files to JSON files, such as Obj\textunderscore To\textunderscore ThreeJS \cite{ObjToJSON}.
 
 \item The class of three.js, TrackballContols.js, will be used for camera positioning.
 
-\item The layout as seen in \textcolor{red}{Three.js - interactive voxel painter [CITE THIS]} will be used, consisting of a two dimentional plane \textcolor{red}{superimposed over an invisible placement plane}, where a cursor can move, which allows for the placement of three dimentional objects.
+\item The layout as seen in Three.js - interactive voxel painter \cite{ThreeJSVoxelPainter} will be used, consisting of a two dimentional plane \textcolor{red}{superimposed over an invisible placement plane}, where a cursor can move, which allows for the placement of three dimentional objects.
 
 \item The basic layout will involve a point-and-click interface, which  
 \end{itemize}
