@@ -230,7 +230,7 @@ The following decisions regarding the front-end JavaScript 3D model interface we
 
 \item The layout as seen in Three.js - interactive voxel painter \cite{ThreeJSVoxelPainter} will be used, consisting of a two dimentional plane \textcolor{red}{superimposed over an invisible placement plane}, where a cursor can move, which allows for the placement of three dimentional objects.
 
-\item The basic layout will involve a point-and-click interface, which  
+\item The basic layout will involve a point-and-click interface, which will allow the user to place objects, and alter camera orientation with mouse or touch-screen gestures. 
 \end{itemize}
 
 \section{Design}
@@ -238,12 +238,22 @@ The following decisions regarding the front-end JavaScript 3D model interface we
 
 \subsection{JavaScript 3D front-end}
 
+The 3D user interface was developed using WebGL via JavaScript, using the three.js library as outlined in section \ref{subSec:Three.js}. Specifically, all unique funtional requirements for the operation of the 3D modelling aspect of the web-application were identified and isolated from the JavaScript classes originally produced in section \ref{subSubSec:ThreeJSExperiments:Lab13}, further decomposing and encapsulating the functionality into more, smaller classes. This part of the project follows it's own Model-View-Controller (MVC) structure, as illustrated in figure \ref{fig:JavaScriptArchitectureDiagram}.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in]{Resources//Design_Diagrams//Component_JavaScript 3D model.png}
-\caption{Model-View-Controller (MVC) architectural diagram of the JavaScript 3D viewer.}
-\label{}
+\caption{MVC architectural diagram of the JavaScript 3D viewer.}
+\label{fig:JavaScriptArchitectureDiagram}
 \end{figure}
+
+Structurally, these classes follow a facade design pattern, with the controller class, DataCentreModelling\_Controller creating and calling the generateEnvironment method of model class Environment within it's own  method init, which is called on DataCentreModelling\_Controller's construction. 
+
+Each one of these classes is contained within a single JavaScript file, in order to make them more intelligible to human readers, and more familiar to object-oriented programmers.
+
+\textcolor{green}{
+The classes Environment, Environment's subordinate classes, and ObjectFactory all contain constructors and encapsulated methods, functioning in much the same way as classes of any object oriented language, where as DataCentreModelling\_Controller behaves more like a static class; all of it's attributes are static, and many of them are accessed by other classes as static variables. This is nessecary to allow for certain things to occur by default, such as DataCentreModelling\_Controller's method init. This also allows for certain variables not to need to be re-assigned within subordinate classes, as attempts to treat them in that manner had failed.
+[YOU GOT THIS FAR!!!]}
 
 \begin{figure}[H]
 \centering
@@ -251,6 +261,8 @@ The following decisions regarding the front-end JavaScript 3D model interface we
 \caption{UML Class diagram of the JavaScript 3D viewer. Note that due to JavaScriptbeing a weakly typed language, some attributes are labeled 'var', denoting that they are weakly typed variables. However, where a variable would have a strongly-typed analogue, such as String or into, it is labeled as such to clarify it's role. Furthermore, Where a variable is assigned as an object, even if it is not assigned that variable upon construction, is labeled as being an object of that class in order to distinguish it.}
 \label{}
 \end{figure}
+
+Environment's generateEnvironment method creates objects of other classes required to generate the 3D environment, such as the grid plane, and the lights.
 
 \begin{figure}[H]
 \centering
