@@ -251,24 +251,26 @@ Structurally, these classes follow a facade design pattern, with the controller 
 
 Each one of these classes is contained within a single JavaScript file, in order to make them more intelligible to human readers, and more familiar to object-oriented programmers.
 
-\textcolor{green}{
 The classes Environment, Environment's subordinate classes, and ObjectFactory all contain constructors and encapsulated methods, functioning in much the same way as classes of any object oriented language, where as DataCentreModelling\_Controller behaves more like a static class; all of it's attributes are static, and many of them are accessed by other classes as static variables. This is nessecary to allow for certain things to occur by default, such as DataCentreModelling\_Controller's method init. This also allows for certain variables not to need to be re-assigned within subordinate classes, as attempts to treat them in that manner had failed.
-[YOU GOT THIS FAR!!!]}
+
+\textcolor{red}{HERE}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in]{Resources//Design_Diagrams//Class_ JavaScript Front-end.png}
 \caption{UML Class diagram of the JavaScript 3D viewer. Note that due to JavaScriptbeing a weakly typed language, some attributes are labeled 'var', denoting that they are weakly typed variables. However, where a variable would have a strongly-typed analogue, such as String or into, it is labeled as such to clarify it's role. Furthermore, Where a variable is assigned as an object, even if it is not assigned that variable upon construction, is labeled as being an object of that class in order to distinguish it.}
-\label{}
+\label{fig:ClassDiagram_JavaScriptFrontEnd}
 \end{figure}
 
-Environment's generateEnvironment method creates objects of other classes required to generate the 3D environment, such as the grid plane, and the lights.
+\textcolor{red}{Environment's generateEnvironment method creates objects of other classes required to generate the 3D environment, such as the grid plane, and the lights. In this role, class DataCentreModelling\_Controller constructs an object of class Environment, who's constructor constructs objects of classes required to render the 3D environment. These include those required to render certain 3D objects, such as the Grid-plane and the object placement cursor, as well as others such as the Camera-view controller object (CameraController) and listeners. As Environment does this within it's constructor, it can be thought of as a singleton class, as only a single instance of it is ever constructed, that one instance is all that is needed to render the environment, and any changes to that environment are made to the objects which were constructed by that Environment object. \textcolor{blue}{All classes called by Environment which represent 3D objects include draw methods, which are called within Environment's method init, allowing them to be constructed but not drawn if required, however, other classes required for the functionality of the environment, such as CameraControls and Listeners are fully initialised and added to the Environment object by their constructors. This can be seen in the sequence diagram of the 3D environment creation shown in figure \ref{fig:Sequence_JavaScript_create_environment}.}}
+
+\textcolor{red}{Furthermore, the process by which the loading of the HTML page calls DataCentreModelling\_Controller, which leads to the construction of an Environment object, leading to the construction of all other objects required to render the 3D environment means that the this can be seen as a facade pattern due to a single action triggering the rendering of the whole environment. This can be seen in the JavaScript front-end class diagram in figure \ref{fig:ClassDiagram_JavaScriptFrontEnd}. \textcolor{green}{[YOU GOT THIS FAR!!!]}}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=5in]{Resources//Design_Diagrams//Sequence_JavaScript_create_environment.png}
 \caption{UML Sequence diagram of the process of rendering the 3D visual environment on page load, showing interactions between JavaScript classes.}
-\label{}
+\label{fig:Sequence_JavaScript_create_environment}
 \end{figure}
 
 \begin{figure}[H]
